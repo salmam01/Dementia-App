@@ -21,6 +21,9 @@ object DSColours {
 
     val Divider = Color(0xFF9C9CA3)
 
+    val DisabledContainer = Color(0xFF1E1E1E).copy(alpha = 0.12f)
+    val OnDisabled =  Color(0xFF1E1E1E).copy(alpha = 0.38f)
+
     val PositiveActionPrimary = Color(0xFF006624)
     val PositiveActionContainer = Color(0xFFBFEDCF)
     val PositiveActionOutline = Color(0xFF00481A)
@@ -33,31 +36,38 @@ object DSColours {
 
     val Notification = Color(0xFFF5B85F)
     val Warning = Color(0xFFEA940A)
-}
 
-object DSFeatureColours {
-    object Calendar {
-        val Primary = Color(0xFF623EC3)
-    }
+    val DayTime = Color(0xFFFFB820)
+    val NightTime = Color(0xFFFFB820)
 
-    object Diary {
-        val Primary = Color(0xFF008939)
-        val Accent = Color(0xFFB1EFA1)
-    }
+    object FeatureColours {
+        object Calendar {
+            val Primary = Color(0xFF623EC3)
+        }
 
-    object MyFamily {
-        val Primary = Color(0xFFD8006F)
-        val Container = Color(0xFFF6C2DB)
-        val Outline = Color(0xFFE995BE)
-    }
+        object Diary {
+            val Primary = Color(0xFF008939)
+            val Accent = Color(0xFFB1EFA1)
+        }
 
-    object Medication {
-        val Primary = Color(0xFF1A78E3)
-        val Accent = Color(0xFFD4EDFF)
-    }
+        object MyFamily {
+            val Primary = Color(0xFFD8006F)
+            val Container = Color(0xFFF6C2DB)
+            val Outline = Color(0xFFE995BE)
+        }
 
-    object Reminders {
-        val Primary = Color(0xFF9B08B8)
-        val Container = Color(0xFFF1DEF5)
+        object Medication {
+            val Primary = Color(0xFF1A78E3)
+            val Accent = Color(0xFFD4EDFF)
+        }
+
+        object Reminders {
+            val Primary = Color(0xFF9B08B8)
+            val Container = Color(0xFFF1DEF5)
+        }
+        object Call {
+            val Primary = Color(0xFFB60000)
+            val Container = Color(0xFFF4D9D9)
+        }
     }
 }

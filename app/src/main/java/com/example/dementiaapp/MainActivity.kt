@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.dementiaapp.features.home.HomeScreen
+import com.example.dementiaapp.navigation.NavigationRoot
 import com.example.dementiaapp.ui.theme.DementiaAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,9 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            DementiaAppTheme {
-
-            }
+            NavigationRoot()
         }
     }
 }

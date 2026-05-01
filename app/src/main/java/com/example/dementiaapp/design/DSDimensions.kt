@@ -1,21 +1,46 @@
 package com.example.dementiaapp.design
 
+import androidx.compose.ui.unit.dp
+
 object DSDimensions {
-    val Space1 = 5
-    val Space2 = 10
-    val Space3 = 20
-    val Space4 = 30
+    val Space1 = 5.dp
+    val Space2 = 10.dp
+    val Space3 = 15.dp
+    val Space4 = 20.dp
+    val Space5 = 30.dp
 
-    val CornerRadius1 = 12
-    val CornerRadius2 = 25
-    val CornerRadius3 = 40
+    val CornerRadius1 = 12.dp
+    val CornerRadius2 = 25.dp
+    val CornerRadius3 = 40.dp
 
-    val Icon1 = 20
-    val Icon2 = 24
-    val Icon3 = 28
-    val Icon4 = 32
-    val Icon5 = 36
-    val Icon6 = 40
-    val Icon7 = 60
-    val Icon8 = 80
+    val Icon1 = 20.dp
+    val Icon2 = 24.dp
+    val Icon3 = 28.dp
+    val Icon4 = 32.dp
+    val Icon5 = 36.dp
+    val Icon6 = 40.dp
+    val Icon7 = 56.dp
+    val Icon8 = 60.dp
+    val Icon9 = 80.dp
+    val Icon10 = 90.dp
+
+    val Avatar1 = 100.dp
+    val Avatar2 = 120.dp
+
+    val Element1 = 170.dp
+
+    val BorderRadius1 = 1.dp
+    val BorderRadius2 = 2.dp
+    val BorderRadius3 = 3.dp
+    val BorderRadius4 = 5.dp
+
+    val DividerThickness1 = 1.dp
+    val DividerThickness2 = 2.dp
+
+    val NavigationBarHeight = 100.dp
+    val DateSectionHeight = 70.dp
+    val ImageBox = 120.dp
+    val CheckBoxSize = 40.dp
+
+    val AddButtonSpace = 100.dp
 }

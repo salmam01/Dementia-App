@@ -59,11 +59,22 @@ dependencies {
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.collections.immutable)
 
     // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+
+    // Dependency Injection
+    implementation(libs.koin.android)
+    implementation(libs.koin.compose)
+
+    // DataStore for storing user settings
+    implementation(libs.androidx.datastore.preferences)
+
+    // Icons
+    implementation(libs.androidx.compose.material.icons.extended)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
