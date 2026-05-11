@@ -24,6 +24,9 @@ object DSColours {
     val DisabledContainer = Color(0xFF1E1E1E).copy(alpha = 0.12f)
     val OnDisabled =  Color(0xFF1E1E1E).copy(alpha = 0.38f)
 
+    val CheckBoxOutline = Color(0xFFCECECE)
+    val CheckBoxBackground = Color(0xFF787880)
+
     val PositiveActionPrimary = Color(0xFF006624)
     val PositiveActionContainer = Color(0xFFBFEDCF)
     val PositiveActionOutline = Color(0xFF00481A)

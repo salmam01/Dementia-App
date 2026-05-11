@@ -26,20 +26,20 @@ import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.domain.models.FeatureType
-import com.example.dementiaapp.features.calendar.CalendarScreen
-import com.example.dementiaapp.features.chat.ChatScreen
-import com.example.dementiaapp.features.diary.DiaryScreen
-import com.example.dementiaapp.features.home.HomeScreen
-import com.example.dementiaapp.features.logs.LogsScreen
-import com.example.dementiaapp.features.medication.all.AllMedicationsScreen
-import com.example.dementiaapp.features.medication.manage.ManageMedicationScreen
-import com.example.dementiaapp.features.medication.main.MedicationScreen
-import com.example.dementiaapp.features.myfamily.details.MyFamilyDetailScreen
-import com.example.dementiaapp.features.myfamily.main.MyFamilyScreen
-import com.example.dementiaapp.features.myfamily.manage.ManageMyFamilyScreen
-import com.example.dementiaapp.features.profile.ProfileScreen
-import com.example.dementiaapp.features.reminders.main.RemindersScreen
-import com.example.dementiaapp.features.reminders.manage.ManageRemindersScreen
+import com.example.dementiaapp.feature.calendar.CalendarScreen
+import com.example.dementiaapp.feature.chat.ChatScreen
+import com.example.dementiaapp.feature.diary.DiaryScreen
+import com.example.dementiaapp.feature.home.HomeScreen
+import com.example.dementiaapp.feature.logs.LogsScreen
+import com.example.dementiaapp.feature.medication.all.AllMedicationsScreen
+import com.example.dementiaapp.feature.medication.manage.ManageMedicationScreen
+import com.example.dementiaapp.feature.medication.main.MedicationScreen
+import com.example.dementiaapp.feature.myfamily.details.MyFamilyDetailScreen
+import com.example.dementiaapp.feature.myfamily.main.MyFamilyScreen
+import com.example.dementiaapp.feature.myfamily.manage.ManageMyFamilyScreen
+import com.example.dementiaapp.feature.profile.ProfileScreen
+import com.example.dementiaapp.feature.reminders.main.RemindersScreen
+import com.example.dementiaapp.feature.reminders.manage.ManageRemindersScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
