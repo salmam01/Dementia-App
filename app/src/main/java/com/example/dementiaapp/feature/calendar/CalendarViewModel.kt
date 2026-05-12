@@ -35,8 +35,8 @@ class CalendarViewModel(
     val state = _state.asStateFlow()
 
     init {
+        getFeatureTypes()
         observeSelectedDate()
-        getFeaturetypes()
     }
 
     private fun observeSelectedDate() {
@@ -111,7 +111,7 @@ class CalendarViewModel(
         applyFilter()
     }
 
-    fun getFeaturetypes() {
+    fun getFeatureTypes() {
         val calendarFeatureTypes = buildList {
             if (permissionsManager.hasAccess(FeatureType.DIARY)) {
                 add(CalendarFeatureTypes.DIARY)
@@ -135,16 +135,19 @@ class CalendarViewModel(
         ) }
     }
 
-    fun toggleFilterOptions(appliedFilters: List<CalendarFeatureTypes>) {
-        _state.update { it.copy(appliedFilters = appliedFilters) }
+    fun toggleFilterOptions(filtersToApply: List<CalendarFeatureTypes>) {
+        _state.update { it.copy(appliedFilters = filtersToApply) }
 
         applyFilter()
     }
 
     private fun applyFilter() {
         val appliedFilters = _state.value.appliedFilters
+        val calendarEntries = _state.value.calendarEntries
 
-        val filtered = state.value.calendarEntries.filter { entry ->
+        // if no filters are applied, return the entire list, else filter the
+        // list by matching the type to the applied filters
+        val filtered = calendarEntries.filter { entry ->
             appliedFilters.isEmpty() || entry.type in appliedFilters
         }
 

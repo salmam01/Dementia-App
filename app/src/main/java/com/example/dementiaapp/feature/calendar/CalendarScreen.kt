@@ -97,8 +97,9 @@ fun CalendarScreen(
         )
         if (state.showFilterMenu) {
             FilterMenu(
-                calendarFeatureTypes = state.appliedFilters,
-                onToggleFilter = { filters ->
+                allFilterTypes = state.calendarFeatureTypes,
+                appliedFilters = state.appliedFilters,
+                onApplyFilters = { filters ->
                     viewModel.toggleFilterOptions(filters)
                     viewModel.toggleFilterMenu()
                  },

@@ -127,4 +127,11 @@ object ActionButtonStyles {
         contentDescription = "Filter",
         containerColour = DSColours.FeatureColours.Calendar.Primary
     )
+
+    val ApplyFilter = ActionButtonStyle(
+        text = "Apply Filters",
+        icon = Icons.Rounded.Check,
+        contentDescription = "Apply Filter",
+        containerColour = DSColours.FeatureColours.Calendar.Primary
+    )
 }

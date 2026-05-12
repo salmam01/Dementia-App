@@ -21,6 +21,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -32,14 +36,21 @@ import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.feature.AllFeatureUI
 import com.example.dementiaapp.feature.components.CheckBoxRound
+import com.example.dementiaapp.feature.components.buttons.ActionButton
+import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
 
 @Composable
 fun FilterMenu(
-    calendarFeatureTypes: List<CalendarFeatureTypes>,
-    onToggleFilter: (List<CalendarFeatureTypes>) -> Unit,
+    allFilterTypes: List<CalendarFeatureTypes>,
+    appliedFilters: List<CalendarFeatureTypes>,
+    onApplyFilters: (List<CalendarFeatureTypes>) -> Unit,
     onCancel: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var toggledFilters by rememberSaveable {
+        mutableStateOf(value = appliedFilters)
+    }
+
     Surface(
         color = DSColours.OnSurface.copy(alpha = 0.8f),
         modifier = modifier
@@ -99,15 +110,20 @@ fun FilterMenu(
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {
-                    calendarFeatureTypes.forEach { filter ->
+                    allFilterTypes.forEach { filter ->
                         when (filter) {
                             CalendarFeatureTypes.DIARY -> {
                                 FilterItem(
                                     name = AllFeatureUI.DiaryUI.name,
                                     icon = AllFeatureUI.DiaryUI.icon,
                                     colour = AllFeatureUI.DiaryUI.colour,
-                                    itemChecked = CalendarFeatureTypes.DIARY in calendarFeatureTypes,
-                                    onItemChecked = { }
+                                    itemChecked = CalendarFeatureTypes.DIARY in toggledFilters,
+                                    onItemChecked = {
+                                        toggledFilters = toggleFilter(
+                                            filter,
+                                            appliedFilters = toggledFilters
+                                        )
+                                    }
                                 )
                             }
                             CalendarFeatureTypes.MEDICATION -> {
@@ -115,8 +131,13 @@ fun FilterMenu(
                                     name = AllFeatureUI.MedicationUI.name,
                                     icon = AllFeatureUI.MedicationUI.icon,
                                     colour = AllFeatureUI.MedicationUI.colour,
-                                    itemChecked = CalendarFeatureTypes.DIARY in calendarFeatureTypes,
-                                    onItemChecked = { }
+                                    itemChecked = CalendarFeatureTypes.MEDICATION in toggledFilters,
+                                    onItemChecked = {
+                                        toggledFilters = toggleFilter(
+                                            filter,
+                                            appliedFilters = toggledFilters
+                                        )
+                                    }
                                 )
                             }
                             CalendarFeatureTypes.REMINDERS -> {
@@ -124,8 +145,13 @@ fun FilterMenu(
                                     name = AllFeatureUI.RemindersUI.name,
                                     icon = AllFeatureUI.RemindersUI.icon,
                                     colour = AllFeatureUI.RemindersUI.colour,
-                                    itemChecked = CalendarFeatureTypes.DIARY in calendarFeatureTypes,
-                                    onItemChecked = { }
+                                    itemChecked = CalendarFeatureTypes.REMINDERS in toggledFilters,
+                                    onItemChecked = {
+                                        toggledFilters = toggleFilter(
+                                            filter,
+                                            appliedFilters = toggledFilters
+                                        )
+                                    }
                                 )
                             }
                         }
@@ -135,6 +161,26 @@ fun FilterMenu(
                             color = DSColours.Divider
                         )
                     }
+                }
+
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = DSDimensions.Space4)
+                ) {
+                    ActionButton(
+                        style = ActionButtonStyles.ApplyFilter,
+                        onClick = { onApplyFilters(toggledFilters) },
+
+                        shape = RoundedCornerShape(DSDimensions.CornerRadius3),
+                        fontSize = DSTypography.Body.Large,
+                        iconSize = DSDimensions.Icon3,
+
+                        verticalPadding = DSDimensions.Space4,
+                        horizontalPadding = DSDimensions.Space4,
+                    )
                 }
             }
         }
@@ -152,8 +198,9 @@ fun FilterItem(
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(DSDimensions.Space3),
+        verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
-            .padding(DSDimensions.Space3)
+            .padding(DSDimensions.Space4)
     ) {
         CheckBoxRound(
             itemChecked = itemChecked,
@@ -163,7 +210,8 @@ fun FilterItem(
         Icon(
             imageVector = icon,
             contentDescription = name,
-            tint = colour
+            tint = colour,
+            modifier = Modifier.size(DSDimensions.Icon6)
         )
 
         Text(
@@ -171,5 +219,16 @@ fun FilterItem(
             fontSize = DSTypography.Body.Large,
             fontWeight = FontWeight.Medium
         )
+    }
+}
+
+fun toggleFilter(
+    filter: CalendarFeatureTypes,
+    appliedFilters: List<CalendarFeatureTypes>
+): List<CalendarFeatureTypes> {
+    return if (filter in appliedFilters) {
+        appliedFilters - filter
+    } else {
+        appliedFilters + filter
     }
 }
