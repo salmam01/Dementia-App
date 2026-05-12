@@ -154,8 +154,8 @@ fun MyFamilyEntryItem(
                 contentDescription = "${item.fullName} Avatar",
                 modifier = Modifier
                     .size(
-                        height = DSDimensions.Avatar1,
-                        width = DSDimensions.Avatar1
+                        height = DSDimensions.Avatar2,
+                        width = DSDimensions.Avatar2
                     )
                     .clip(shape = CircleShape)
                     .border(

@@ -53,7 +53,7 @@ object DefaultPermissions {
             ),
             FeaturePermissions(
                 feature = AllFeatures.Profile,
-                isEnabled = false,
+                isEnabled = true,
                 permittedActions = AllFeatures.Profile
                     .createDefaultActionPermission(true)
             )

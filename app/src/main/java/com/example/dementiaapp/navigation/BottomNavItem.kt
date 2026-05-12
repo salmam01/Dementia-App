@@ -1,7 +1,7 @@
 package com.example.dementiaapp.navigation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.Message
+import androidx.compose.material.icons.rounded.ChatBubble
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -17,7 +17,7 @@ val TOP_LEVEL_DESTINATIONS = mapOf(
         title = "Home"
     ),
     Route.Chat to BottomNavItem(
-        icon = Icons.AutoMirrored.Filled.Message,
+        icon = Icons.Rounded.ChatBubble,
         title = "Chat"
     ),
     Route.Profile to BottomNavItem(

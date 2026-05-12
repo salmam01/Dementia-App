@@ -32,9 +32,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
+import com.example.dementiaapp.domain.models.FeatureType
 import com.example.dementiaapp.domain.time.TimeProvider.toDayTime
-import com.example.dementiaapp.feature.components.DatePickerSection
-import com.example.dementiaapp.feature.components.DayTimeSection
+import com.example.dementiaapp.feature.components.time.DatePickerSection
+import com.example.dementiaapp.feature.components.time.DayTimeSection
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
@@ -44,6 +45,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CalendarScreen(
+    onNavigate: (FeatureType) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val viewModel: CalendarViewModel = koinViewModel()
@@ -83,7 +85,7 @@ fun CalendarScreen(
             CalendarEntries(
                 state.filteredCalendarEntries,
                 state.appliedFilters,
-                onEntryClick = { }
+                onEntryClick = { onNavigate(it) }
             )
         }
         StickyActionButton(
@@ -113,7 +115,7 @@ fun CalendarScreen(
 fun CalendarEntries(
     entries: List<CalendarEntry>,
     appliedFilters: List<CalendarFeatureTypes>,
-    onEntryClick: (String) -> Unit,
+    onEntryClick: (FeatureType) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -138,7 +140,7 @@ fun CalendarEntries(
                 items.forEach { entry ->
                     CalendarEntry(
                         entry = entry,
-                        onClick = { onEntryClick(entry.id) }
+                        onClick = { onEntryClick(it) }
                     )
                 }
             }
@@ -149,7 +151,7 @@ fun CalendarEntries(
 @Composable
 fun CalendarEntry(
     entry: CalendarEntry,
-    onClick: () -> Unit,
+    onClick: (FeatureType) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -202,7 +204,15 @@ fun CalendarEntry(
         IconButton(
             modifier = Modifier
                 .padding(end = DSDimensions.Space1),
-            onClick = { }
+            onClick = {
+                val featureType = when (entry.type) {
+                    CalendarFeatureTypes.DIARY -> FeatureType.DIARY
+                    CalendarFeatureTypes.MEDICATION -> FeatureType.MEDICATION
+                    CalendarFeatureTypes.REMINDERS -> FeatureType.REMINDERS
+                }
+
+                onClick(featureType)
+            }
         ) {
             Icon(
                 imageVector = Icons.Rounded.ArrowBackIosNew,
@@ -214,5 +224,4 @@ fun CalendarEntry(
             )
         }
     }
-
 }

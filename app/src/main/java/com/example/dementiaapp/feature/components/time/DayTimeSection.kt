@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.components
+package com.example.dementiaapp.feature.components.time
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer

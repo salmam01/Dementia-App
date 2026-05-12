@@ -17,14 +17,20 @@ object TimeFormatterUtil {
         )
     }
 
+    fun formatBirthday(date: LocalDate): String {
+        return date.format(
+            DateTimeFormatter.ofPattern("dd.MM.yyyy")
+        )
+    }
+
     fun formatTime(dateTime: LocalDateTime): String {
         return dateTime.format(
             DateTimeFormatter.ofPattern("HH:mm")
         )
     }
 
-    fun formatLocalTime(dateTime: LocalTime): String {
-        return dateTime.format(
+    fun formatLocalTime(time: LocalTime): String {
+        return time.format(
             DateTimeFormatter.ofPattern("HH:mm")
         )
     }

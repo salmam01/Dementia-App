@@ -24,8 +24,10 @@ object DSDimensions {
     val Icon9 = 80.dp
     val Icon10 = 90.dp
 
-    val Avatar1 = 100.dp
-    val Avatar2 = 120.dp
+    val Avatar1 = 75.dp
+    val Avatar2 = 100.dp
+    val Avatar3 = 120.dp
+    val Avatar4 = 150.dp
 
     val Element1 = 170.dp
 

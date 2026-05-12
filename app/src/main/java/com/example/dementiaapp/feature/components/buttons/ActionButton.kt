@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Call
+import androidx.compose.material.icons.rounded.ChatBubble
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Delete
@@ -133,5 +135,19 @@ object ActionButtonStyles {
         icon = Icons.Rounded.Check,
         contentDescription = "Apply Filter",
         containerColour = DSColours.FeatureColours.Calendar.Primary
+    )
+
+    val Message = ActionButtonStyle(
+        text = "Message",
+        icon = Icons.Rounded.ChatBubble,
+        contentDescription = "Message",
+        containerColour = DSColours.FeatureColours.CarePartner.Primary
+    )
+
+    val Call = ActionButtonStyle(
+        text = "Call",
+        icon = Icons.Rounded.Call,
+        contentDescription = "Call",
+        containerColour = DSColours.FeatureColours.Call.Primary
     )
 }

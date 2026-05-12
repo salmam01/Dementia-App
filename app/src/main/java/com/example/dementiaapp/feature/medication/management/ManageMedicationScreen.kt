@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.medication.manage
+package com.example.dementiaapp.feature.medication.management
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.domain.models.Medication
-import com.example.dementiaapp.feature.components.FormButtons
+import com.example.dementiaapp.feature.components.buttons.FormButtons
 import com.example.dementiaapp.feature.components.TitleSection
 import org.koin.androidx.compose.koinViewModel
 

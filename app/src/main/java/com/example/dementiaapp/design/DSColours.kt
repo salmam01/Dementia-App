@@ -68,6 +68,12 @@ object DSColours {
             val Primary = Color(0xFF9B08B8)
             val Container = Color(0xFFF1DEF5)
         }
+
+        object CarePartner {
+            val Primary = Color(0xFFD8006F)
+            val Outline = Color(0xFFE995BE)
+        }
+
         object Call {
             val Primary = Color(0xFFB60000)
             val Container = Color(0xFFF4D9D9)

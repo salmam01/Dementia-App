@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.reminders.main
+package com.example.dementiaapp.feature.reminders.carerecipient
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -31,29 +31,26 @@ import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.Reminder
 import com.example.dementiaapp.feature.components.CheckBox
 import com.example.dementiaapp.feature.components.ConfirmationDialog
-import com.example.dementiaapp.feature.components.DatePickerSection
+import com.example.dementiaapp.feature.components.time.DatePickerSection
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
+import com.example.dementiaapp.feature.reminders.shared.RemindersViewModel
 import com.example.dementiaapp.util.time.TimeFormatterUtil
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun RemindersScreen(
+fun CRRemindersScreen(
+    viewModel: RemindersViewModel,
     onAddOrEditReminder: (String?) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val viewModel: RemindersViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
     val canAdd = viewModel.hasAccessToAction(FeatureAction.ADD)
     val canEdit = canAdd
             && viewModel.hasAccessToAction(FeatureAction.EDIT)
     val canDelete = canAdd && canEdit
             && viewModel.hasAccessToAction(FeatureAction.DELETE)
-
-    LaunchedEffect(Unit) {
-        viewModel.refresh()
-    }
 
     Box(
         modifier = modifier

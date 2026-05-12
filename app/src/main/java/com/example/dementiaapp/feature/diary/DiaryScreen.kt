@@ -24,7 +24,7 @@ import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.domain.models.DiaryEntry
 import com.example.dementiaapp.feature.components.ConfirmationDialog
-import com.example.dementiaapp.feature.components.DatePickerSection
+import com.example.dementiaapp.feature.components.time.DatePickerSection
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton

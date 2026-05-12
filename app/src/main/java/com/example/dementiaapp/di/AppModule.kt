@@ -2,15 +2,16 @@ package com.example.dementiaapp.di
 
 import com.example.dementiaapp.domain.configuration.PermissionsManager
 import com.example.dementiaapp.domain.state.DateStateHolder
+import com.example.dementiaapp.domain.state.UserStateHolder
 import com.example.dementiaapp.feature.calendar.CalendarViewModel
 import com.example.dementiaapp.feature.diary.DiaryViewModel
 import com.example.dementiaapp.feature.home.HomeViewModel
-import com.example.dementiaapp.feature.medication.manage.ManageMedicationViewModel
+import com.example.dementiaapp.feature.medication.management.ManageMedicationViewModel
 import com.example.dementiaapp.feature.medication.main.MedicationViewModel
 import com.example.dementiaapp.feature.myfamily.main.MyFamilyViewModel
 import com.example.dementiaapp.feature.myfamily.manage.ManageMyFamilyViewModel
-import com.example.dementiaapp.feature.profile.ProfileViewModel
-import com.example.dementiaapp.feature.reminders.main.RemindersViewModel
+import com.example.dementiaapp.feature.profile.main.ProfileViewModel
+import com.example.dementiaapp.feature.reminders.shared.RemindersViewModel
 import com.example.dementiaapp.feature.reminders.manage.ManageRemindersViewModel
 import com.example.dementiaapp.repository.features.DiaryRepository
 import com.example.dementiaapp.repository.features.DiaryRepositoryImpl
@@ -41,6 +42,7 @@ val appModule = module {
         androidContext().dataStore
     }*/
     single { DateStateHolder() }
+    single { UserStateHolder(get()) }
     single { PermissionsManager(get()) }
 
     // ViewModels

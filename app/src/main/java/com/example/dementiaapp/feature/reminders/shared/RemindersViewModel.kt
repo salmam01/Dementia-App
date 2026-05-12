@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.reminders.main
+package com.example.dementiaapp.feature.reminders.shared
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,6 +7,9 @@ import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.FeatureType
 import com.example.dementiaapp.domain.models.Reminder
 import com.example.dementiaapp.domain.state.DateStateHolder
+import com.example.dementiaapp.domain.state.UserStateHolder
+import com.example.dementiaapp.feature.reminders.shared.RemindersState
+import com.example.dementiaapp.repository.UserRepository
 import com.example.dementiaapp.repository.features.RemindersRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,14 +19,18 @@ import kotlinx.coroutines.flow.update
 import java.time.LocalDate
 
 class RemindersViewModel(
-    private val remindersRepository: RemindersRepository,
+    private val userStateHolder: UserStateHolder,
     private val dateStateHolder: DateStateHolder,
+    private val remindersRepository: RemindersRepository,
     private val permissionsManager: PermissionsManager
 ): ViewModel() {
-    private val _state = MutableStateFlow(RemindersState(
-        selectedDate = dateStateHolder.selectedDate.value
-    ))
+    private val _state = MutableStateFlow(
+        RemindersState(
+            selectedDate = dateStateHolder.selectedDate.value
+        )
+    )
     val state = _state.asStateFlow()
+    val user = userStateHolder.currentUser
 
     init {
         observeSelectedDate()

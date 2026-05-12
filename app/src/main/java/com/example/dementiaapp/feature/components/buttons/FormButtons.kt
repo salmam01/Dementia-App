@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.components
+package com.example.dementiaapp.feature.components.buttons
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -9,8 +9,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.dementiaapp.design.DSDimensions
-import com.example.dementiaapp.feature.components.buttons.AddOrSaveButton
-import com.example.dementiaapp.feature.components.buttons.CancelButton
 
 @Composable
 fun FormButtons(

@@ -6,6 +6,7 @@ data class User(
     val id: String,
     val name: String,
     val role: UserRole,
+    var carePartnerId: String?,
     val image: String? = null,
     val gender: UserGender,
     val birthday: LocalDate,

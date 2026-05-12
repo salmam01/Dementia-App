@@ -22,8 +22,8 @@ import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.Medication
 import com.example.dementiaapp.domain.time.TimeProvider.toDayTime
-import com.example.dementiaapp.feature.components.DatePickerSection
-import com.example.dementiaapp.feature.components.DayTimeSection
+import com.example.dementiaapp.feature.components.time.DatePickerSection
+import com.example.dementiaapp.feature.components.time.DayTimeSection
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
 import com.example.dementiaapp.feature.medication.components.MedicationItem
 import com.example.dementiaapp.util.time.DayTime

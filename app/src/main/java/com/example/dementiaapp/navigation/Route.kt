@@ -1,6 +1,7 @@
 package com.example.dementiaapp.navigation
 
 import androidx.navigation3.runtime.NavKey
+import com.example.dementiaapp.domain.models.User
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -14,6 +15,12 @@ sealed interface Route: NavKey {
 
     @Serializable
     data object Profile: Route
+
+    @Serializable
+    data object CarePartner: Route
+
+    @Serializable
+    data object MyData: Route
 
     @Serializable
     data object Calendar: Route
@@ -55,6 +62,8 @@ fun NavKey.title(): String = when (this) {
     Route.Home -> "Home"
     Route.Chat -> "Chat"
     Route.Profile -> "Profile"
+    Route.CarePartner -> "My Care Partner"
+    Route.MyData -> "My Information"
     Route.Calendar -> "Calendar"
     Route.Diary -> "Diary"
     Route.MyFamily -> "My Family"

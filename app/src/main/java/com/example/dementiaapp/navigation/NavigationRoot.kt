@@ -32,14 +32,17 @@ import com.example.dementiaapp.feature.diary.DiaryScreen
 import com.example.dementiaapp.feature.home.HomeScreen
 import com.example.dementiaapp.feature.logs.LogsScreen
 import com.example.dementiaapp.feature.medication.all.AllMedicationsScreen
-import com.example.dementiaapp.feature.medication.manage.ManageMedicationScreen
+import com.example.dementiaapp.feature.medication.management.ManageMedicationScreen
 import com.example.dementiaapp.feature.medication.main.MedicationScreen
 import com.example.dementiaapp.feature.myfamily.details.MyFamilyDetailScreen
 import com.example.dementiaapp.feature.myfamily.main.MyFamilyScreen
 import com.example.dementiaapp.feature.myfamily.manage.ManageMyFamilyScreen
-import com.example.dementiaapp.feature.profile.ProfileScreen
-import com.example.dementiaapp.feature.reminders.main.RemindersScreen
+import com.example.dementiaapp.feature.profile.carepartner.CarePartnerScreen
+import com.example.dementiaapp.feature.profile.main.ProfileScreen
+import com.example.dementiaapp.feature.profile.mydata.MyDataScreen
+import com.example.dementiaapp.feature.reminders.carerecipient.CRRemindersScreen
 import com.example.dementiaapp.feature.reminders.manage.ManageRemindersScreen
+import com.example.dementiaapp.feature.reminders.shared.RemindersScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -138,8 +141,8 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
                 entryProvider {
                     entry<Route.Home> {
                         HomeScreen(
-                            onNavigate = { featureType ->
-                                when (featureType) {
+                            onNavigate = {
+                                when (it) {
                                     FeatureType.CALENDAR -> navigator.navigate(Route.Calendar)
                                     FeatureType.DIARY -> navigator.navigate(Route.Diary)
                                     FeatureType.MY_FAMILY -> navigator.navigate(Route.MyFamily)
@@ -152,7 +155,16 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
                         )
                     }
                     entry<Route.Calendar> {
-                        CalendarScreen()
+                        CalendarScreen(
+                            onNavigate = {
+                                when (it) {
+                                    FeatureType.DIARY -> navigator.navigate(Route.Diary)
+                                    FeatureType.MEDICATION -> navigator.navigate(Route.Medication)
+                                    FeatureType.REMINDERS -> navigator.navigate(Route.Reminders)
+                                    else -> { }
+                                }
+                            }
+                        )
                     }
                     entry<Route.Diary> {
                         DiaryScreen()
@@ -231,7 +243,23 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
                         ChatScreen()
                     }
                     entry<Route.Profile> {
-                        ProfileScreen()
+                        ProfileScreen(
+                            onNavigateToMyData = {
+                                navigator.navigate(Route.MyData)
+                            },
+                            onNavigateToSettings = { },
+                            onNavigateToCarePartner = {
+                                navigator.navigate(Route.CarePartner)
+                            }
+                        )
+                    }
+                    entry<Route.CarePartner> {
+                        CarePartnerScreen(
+                            onNavigate = { }
+                        )
+                    }
+                    entry<Route.MyData> {
+                        MyDataScreen()
                     }
                 }
             )

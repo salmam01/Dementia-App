@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.medication.manage
+package com.example.dementiaapp.feature.medication.management
 
 import com.example.dementiaapp.domain.models.Medication
 

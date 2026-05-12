@@ -11,10 +11,6 @@ class DateStateHolder(
     private val _selectedDate = MutableStateFlow(initialDate)
     val selectedDate = _selectedDate.asStateFlow()
 
-    fun setDate(date: LocalDate) {
-        _selectedDate.value = date
-    }
-
     fun nextDay() {
         _selectedDate.update { it.plusDays(1) }
     }

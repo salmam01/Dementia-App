@@ -78,6 +78,8 @@ val serializersConfig = SavedStateConfiguration {
             subclass(Route.Home::class, Route.Home.serializer())
             subclass(Route.Chat::class, Route.Chat.serializer())
             subclass(Route.Profile::class, Route.Profile.serializer())
+            subclass(Route.CarePartner::class, Route.CarePartner.serializer())
+            subclass(Route.MyData::class, Route.MyData.serializer())
             subclass(Route.Calendar::class, Route.Calendar.serializer())
             subclass(Route.Diary::class, Route.Diary.serializer())
             subclass(Route.MyFamily::class, Route.MyFamily.serializer())
