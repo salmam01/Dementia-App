@@ -36,6 +36,7 @@ import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.domain.models.FeatureType
 import com.example.dementiaapp.feature.FeatureItem
+import com.example.dementiaapp.localization.LocalizedStrings
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -54,7 +55,8 @@ fun HomeScreen(
     ) {
         HomeTopBar(state)
         Features(
-            features,
+            carePartnerName = viewModel.getCarePartnerName(),
+            features = features,
             onFeatureClick = onNavigate
         )
     }
@@ -65,6 +67,7 @@ fun HomeTopBar(
     state: HomeState,
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
     val firstName = state.user.name.substringBefore(" ")
     Column(
         modifier = modifier
@@ -83,7 +86,7 @@ fun HomeTopBar(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Hello, $firstName!",
+                text = strings.greeting + firstName,
                 color = DSColours.OnPrimary,
                 fontSize = DSTypography.Display.Medium,
                 fontWeight = FontWeight.Bold
@@ -99,7 +102,7 @@ fun HomeTopBar(
         Spacer(modifier = Modifier.height(DSDimensions.Space4))
 
         Text(
-            text = "Today is ${state.currentDay}, ${state.currentDate}",
+            text = "${strings.greetingDate}${state.currentDay}, ${state.currentDate}",
             color = DSColours.OnPrimary,
             fontSize = DSTypography.Headline.Medium,
             fontWeight = FontWeight.Medium
@@ -129,6 +132,7 @@ fun HomeTopBar(
 
 @Composable
 fun Features(
+    carePartnerName: String,
     features: List<FeatureItem>,
     onFeatureClick: (FeatureType) -> Unit,
     modifier: Modifier = Modifier
@@ -155,6 +159,7 @@ fun Features(
         ) {
             even.forEach { featureUI ->
                 FeatureItems(
+                    carePartnerName = carePartnerName,
                     item = featureUI,
                     onClick = { onFeatureClick(featureUI.feature.type) }
                 )
@@ -168,7 +173,8 @@ fun Features(
         ) {
             odd.forEach { featureUI ->
                 FeatureItems(
-                    featureUI,
+                    carePartnerName = carePartnerName,
+                    item = featureUI,
                     onClick = { onFeatureClick(featureUI.feature.type) }
                 )
             }
@@ -178,6 +184,7 @@ fun Features(
 
 @Composable
 fun FeatureItems(
+    carePartnerName: String,
     item: FeatureItem,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -192,6 +199,12 @@ fun FeatureItems(
         DSColours.FeatureColours.Call.Container
     } else {
         DSColours.Surface
+    }
+
+    val itemName = if (item.feature.type == FeatureType.CALL) {
+        "${item.ui.name} " + carePartnerName
+    } else {
+        item.ui.name
     }
 
     Column(
@@ -219,7 +232,7 @@ fun FeatureItems(
         )
         Spacer(modifier = Modifier.height(DSDimensions.Space1))
         Text(
-            text = item.ui.name,
+            text = itemName,
             color = DSColours.OnSurface,
             fontSize = DSTypography.Body.Large,
             fontWeight = FontWeight.Bold

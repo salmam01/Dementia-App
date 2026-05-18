@@ -32,11 +32,14 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
+import com.example.dementiaapp.domain.models.DayTime
 import com.example.dementiaapp.domain.models.FeatureType
+import com.example.dementiaapp.domain.time.TimeProvider.toDayTime
 import com.example.dementiaapp.feature.components.time.DatePickerSection
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
+import com.example.dementiaapp.feature.components.time.DayTimeSection
 import com.example.dementiaapp.util.time.TimeFormatterUtil
 import org.koin.androidx.compose.koinViewModel
 
@@ -125,13 +128,10 @@ fun CalendarEntries(
                 bottom = DSDimensions.AddButtonSpace
             )
     ) {
-        /*
         val grouped = entries
             .groupBy { it.time.toDayTime() }
 
-        DayTimeSection(
-            dayTime =
-        ).entries.forEach { dayTime ->
+        DayTime.entries.forEach { dayTime ->
             val items = grouped[dayTime].orEmpty()
 
             if (items.isNotEmpty()) {
@@ -145,7 +145,6 @@ fun CalendarEntries(
                 }
             }
         }
-         */
     }
 }
 

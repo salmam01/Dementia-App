@@ -90,8 +90,8 @@ fun ReminderItem(
             Spacer(modifier = Modifier.width(DSDimensions.Space2))
 
             CheckBox(
-                itemCompleted = item.completed,
-                onItemCompleted = onItemCompleted
+                itemChecked = item.completed,
+                onItemChecked = onItemCompleted
             )
         }
 

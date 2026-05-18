@@ -23,6 +23,7 @@ import com.example.dementiaapp.feature.components.ConfirmationDialog
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
 import com.example.dementiaapp.feature.medication.components.MedicationItem
 import com.example.dementiaapp.feature.medication.main.MedicationViewModel
+import com.example.dementiaapp.localization.LocalizedStrings
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -32,6 +33,8 @@ fun AllMedicationsScreen(
 ) {
     val viewModel: MedicationViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val strings = LocalizedStrings.current
+
     val canAdd = viewModel.hasAccessToAction(FeatureAction.ADD)
     val canEdit = canAdd
             && viewModel.hasAccessToAction(FeatureAction.EDIT)
@@ -62,7 +65,7 @@ fun AllMedicationsScreen(
             val selectedMedication = state.selectedMedication
             if (selectedMedication != null) {
                 ConfirmationDialog(
-                    text = "delete \"${selectedMedication.name}\"",
+                    text = "${strings.deleteLowerCase} \"${selectedMedication.name}\"",
                     onConfirm = { viewModel.deleteMedication(selectedMedication) },
                     onDeny = { viewModel.hideConfirmationDialog() }
                 )

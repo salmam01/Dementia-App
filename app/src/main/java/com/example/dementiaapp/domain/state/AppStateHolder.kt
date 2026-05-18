@@ -29,6 +29,10 @@ class AppStateHolder(
         )
     )
     val appState = _appState.asStateFlow()
+
+    init {
+        userStateHolder.initializeState()
+    }
 }
 
 data class AppState(

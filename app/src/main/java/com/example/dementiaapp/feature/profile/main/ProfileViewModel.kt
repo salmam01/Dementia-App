@@ -17,13 +17,12 @@ class ProfileViewModel(
     val state = _state.asStateFlow()
 
     fun initializeState(): ProfileState {
-        // for demonstration purposes
-        val carePartnerId = "1"
-
-        userRepository.assignCarePartner(carePartnerId)
-
         val currentUser = userRepository.getCurrentUser()
-        val carePartner = userRepository.getCarePartner(carePartnerId)
+        val carePartner =
+            if (currentUser.carePartnerId != null)
+                userRepository.getCarePartner(currentUser.carePartnerId!!)
+            else
+                null
 
         return ProfileState(
             currentUser,

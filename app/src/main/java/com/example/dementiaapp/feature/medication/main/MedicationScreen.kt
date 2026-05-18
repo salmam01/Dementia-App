@@ -27,6 +27,7 @@ import com.example.dementiaapp.feature.components.time.DatePickerSection
 import com.example.dementiaapp.feature.components.time.DayTimeSection
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
 import com.example.dementiaapp.feature.medication.components.MedicationItem
+import com.example.dementiaapp.localization.LocalizedStrings
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -36,6 +37,7 @@ fun MedicationScreen(
 ) {
     val viewModel: MedicationViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val strings = LocalizedStrings.current
 
     Box(
         modifier = modifier
@@ -63,7 +65,7 @@ fun MedicationScreen(
             )
         }
         StickyActionButton(
-            text = "All Medications",
+            text = strings.allMedications,
             icon = Icons.Filled.RemoveRedEye,
             colour = DSColours.FeatureColours.Medication.Primary,
             onAddClick = onNavigate,

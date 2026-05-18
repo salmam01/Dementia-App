@@ -14,39 +14,61 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.Dp
 import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 
 @Composable
 fun CheckBox(
-    itemCompleted: Boolean,
-    onItemCompleted: () -> Unit,
+    itemChecked: Boolean,
+    onItemChecked: () -> Unit,
     modifier: Modifier = Modifier,
+
+    shape: Shape = CircleShape,
+    borderRadius: Dp = DSDimensions.BorderRadius3,
+    borderColour: Color = DSColours.PositiveActionOutline,
+    borderColourChecked: Color = borderColour,
+
+    size: Dp = DSDimensions.CheckBoxSize,
+    backgroundColour: Color = DSColours.Surface,
+    backgroundColourChecked: Color = DSColours.PositiveActionPrimary,
+
+    icon: ImageVector = Icons.Rounded.Check,
+    contentDescription: String = "Item checked",
+    tint: Color = DSColours.OnPrimary,
+    iconSize: Dp = DSDimensions.Icon4
 ) {
     Box(
         modifier = modifier
-            .size(DSDimensions.CheckBoxSize)
-            .clip(CircleShape)
+            .size(size)
+            .clip(shape)
             .background(
-                color = if (itemCompleted)
-                    DSColours.PositiveActionPrimary
+                color = if (itemChecked)
+                    backgroundColourChecked
                 else
-                    DSColours.Surface
+                    backgroundColour
             )
             .border(
-                width = DSDimensions.BorderRadius3,
-                color = DSColours.PositiveActionOutline,
-                shape = CircleShape
+                width = borderRadius,
+                color =
+                    if (itemChecked)
+                        borderColourChecked
+                    else
+                        borderColour,
+                shape = shape
             )
-            .clickable { onItemCompleted() },
+            .clickable { onItemChecked() },
         contentAlignment = Alignment.Center
     ) {
-        if (itemCompleted) {
+        if (itemChecked) {
             Icon(
-                imageVector = Icons.Rounded.Check,
-                contentDescription = null,
-                tint = DSColours.OnPrimary,
-                modifier = Modifier.size(DSDimensions.Icon4)
+                imageVector = icon,
+                contentDescription = contentDescription,
+                tint = tint,
+                modifier = Modifier.size(iconSize)
             )
         }
     }

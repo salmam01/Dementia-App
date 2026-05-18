@@ -57,12 +57,14 @@ fun CarePartnerScreen(
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
-        CarePartnerHeader(carePartner)
-        CarePartnerBody(carePartner)
-        CarePartnerActions(
-            onMessageClick = onNavigate,
-            onCallClick = { }
-        )
+        if (carePartner != null) {
+            CarePartnerHeader(carePartner)
+            CarePartnerBody(carePartner)
+            CarePartnerActions(
+                onMessageClick = onNavigate,
+                onCallClick = { }
+            )
+        }
     }
 }
 

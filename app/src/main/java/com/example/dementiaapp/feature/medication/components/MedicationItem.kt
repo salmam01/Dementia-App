@@ -35,6 +35,7 @@ import com.example.dementiaapp.domain.models.toUIString
 import com.example.dementiaapp.feature.components.CheckBox
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
+import com.example.dementiaapp.localization.LocalizedStrings
 
 
 @Composable
@@ -48,6 +49,7 @@ fun MedicationItem(
     onDeleteClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
@@ -76,8 +78,8 @@ fun MedicationItem(
 
             if (hasCheckBox) {
                 CheckBox(
-                    itemCompleted = item.completed,
-                    onItemCompleted = onItemCompleted
+                    itemChecked = item.completed,
+                    onItemChecked = onItemCompleted
                 )
             }
         }
@@ -113,15 +115,15 @@ fun MedicationItem(
                     .fillMaxHeight()
             ) {
                 MedicationItemDetailRow(
-                    label = "Dose",
+                    label = strings.dose,
                     detail = item.dose
                 )
                 MedicationItemDetailRow(
-                    label = "Take at",
+                    label = strings.takeAt,
                     detail = item.takeAt.toString()
                 )
                 MedicationItemDetailRow(
-                    label = "Repeat",
+                    label = strings.repeat,
                     detail = item.repeat.toUIString()
                 )
             }
@@ -138,7 +140,7 @@ fun MedicationItem(
                     )
             ) {
                 Text(
-                    text = "Notes",
+                    text = strings.notes,
                     fontWeight = FontWeight.Bold,
                     fontSize = DSTypography.Body.Large
                 )

@@ -14,7 +14,10 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.domain.models.Feature
 import com.example.dementiaapp.domain.models.FeatureType
+import com.example.dementiaapp.localization.LocalizedStrings
 import kotlin.collections.map
+
+val strings = LocalizedStrings.current
 
 data class FeatureUI (
     val name: String,
@@ -29,42 +32,42 @@ data class FeatureItem(
 
 object AllFeatureUI {
     val CalendarUI = FeatureUI(
-        name = "Calendar",
+        name = strings.calendar,
         colour = DSColours.FeatureColours.Calendar.Primary,
         icon = Icons.Rounded.CalendarMonth
     )
     val DiaryUI = FeatureUI(
-        name = "Diary",
+        name = strings.diary,
         colour = DSColours.FeatureColours.Diary.Primary,
         icon = Icons.Rounded.Book
     )
     val MyFamilyUI = FeatureUI(
-        name = "My Family",
+        name = strings.myFamily,
         colour = DSColours.FeatureColours.MyFamily.Primary,
         icon = Icons.Rounded.Favorite
     )
     val MedicationUI = FeatureUI(
-        name = "Medication",
+        name = strings.medication,
         colour = DSColours.FeatureColours.Medication.Primary,
         icon = Icons.Rounded.Medication
     )
     val RemindersUI = FeatureUI(
-        name = "Reminders",
+        name = strings.reminders,
         colour = DSColours.FeatureColours.Reminders.Primary,
         icon = Icons.Rounded.NotificationsActive
     )
     val CallUI = FeatureUI(
-        name = "Call",
+        name = strings.call,
         colour = DSColours.FeatureColours.Call.Primary,
         icon = Icons.Rounded.Phone
     )
     val LogsUI = FeatureUI(
-        name = "Logs",
+        name = strings.logs,
         colour = DSColours.Primary,
         icon = Icons.AutoMirrored.Filled.LibraryBooks
     )
     val ProfileUI = FeatureUI(
-        name = "Profile",
+        name = strings.profile,
         colour = DSColours.Primary,
         icon = Icons.Rounded.Person
     )

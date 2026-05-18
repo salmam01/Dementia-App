@@ -92,7 +92,7 @@ fun ProfileScreen(
 
 @Composable
 fun ProfileItemsList(
-    carePartner: User,
+    carePartner: User?,
     profileNavigation: List<ProfileNavigation>,
     onItemClick: (ProfileNavigation) -> Unit,
     modifier: Modifier = Modifier
@@ -122,10 +122,12 @@ fun ProfileItemsList(
                     )
                 }
                 ProfileNavigation.CARE_PARTNER -> {
-                    CarePartnerItem(
-                        carePartner = carePartner,
-                        onItemClick = { onItemClick(it) }
-                    )
+                    if (carePartner != null) {
+                        CarePartnerItem(
+                            carePartner = carePartner,
+                            onItemClick = { onItemClick(it) }
+                        )
+                    }
                 }
             }
         }

@@ -35,7 +35,7 @@ import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.feature.AllFeatureUI
-import com.example.dementiaapp.feature.components.CheckBoxRound
+import com.example.dementiaapp.feature.components.CheckBox
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
 
@@ -202,9 +202,12 @@ fun FilterItem(
         modifier = modifier
             .padding(DSDimensions.Space4)
     ) {
-        CheckBoxRound(
+        CheckBox(
             itemChecked = itemChecked,
-            onItemChecked = onItemChecked
+            onItemChecked = onItemChecked,
+            shape = RoundedCornerShape(DSDimensions.CornerRadius1),
+            backgroundColourChecked = DSColours.CheckBoxBackground,
+            borderColour = DSColours.CheckBoxOutline
         )
 
         Icon(

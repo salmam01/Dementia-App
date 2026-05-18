@@ -8,7 +8,7 @@ import java.time.LocalDate
 interface UserRepository {
     fun getCurrentUser(): User
     fun assignCarePartner(carePartnerId: String)
-    fun getCarePartner(carePartnerId: String): User
+    fun getCarePartner(carePartnerId: String): User?
 }
 
 class UserRepositoryImpl: UserRepository {
@@ -57,8 +57,8 @@ class UserRepositoryImpl: UserRepository {
 
     override fun getCarePartner(
         carePartnerId: String
-    ): User {
-        return users.first {
+    ): User? {
+        return users.firstOrNull {
             it.id == carePartnerId
         }
     }

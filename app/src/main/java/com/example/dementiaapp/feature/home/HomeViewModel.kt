@@ -2,7 +2,6 @@ package com.example.dementiaapp.feature.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.dementiaapp.domain.configuration.PermissionsManager
 import com.example.dementiaapp.domain.state.AppStateHolder
 import com.example.dementiaapp.feature.mapFeaturesToFeaturesItems
 import com.example.dementiaapp.repository.UserRepository
@@ -16,7 +15,8 @@ import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
 class HomeViewModel(
-    appStateHolder: AppStateHolder
+    appStateHolder: AppStateHolder,
+    private val userRepository: UserRepository
 ): ViewModel() {
     private val _state = MutableStateFlow(HomeState(
         user = appStateHolder.appState.value.user,
@@ -47,5 +47,15 @@ class HomeViewModel(
             currentDay = TimeFormatterUtil.formatDay(date),
             currentTime = TimeFormatterUtil.formatTime(date)
         ) }
+    }
+
+    fun getCarePartnerName(): String {
+        val carePartnerId = state.value.user.carePartnerId
+        if (carePartnerId != null) {
+            val carePartner = userRepository.getCarePartner(carePartnerId)
+            return carePartner?.name?.substringBefore(" ")!!
+        } else {
+            return ""
+        }
     }
 }

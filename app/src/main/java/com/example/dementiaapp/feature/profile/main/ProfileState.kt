@@ -4,7 +4,7 @@ import com.example.dementiaapp.domain.models.User
 
 data class ProfileState(
     val user: User,
-    val carePartner: User,
+    val carePartner: User?,
     val profileNavigation: List<ProfileNavigation> = emptyList()
 )
 
