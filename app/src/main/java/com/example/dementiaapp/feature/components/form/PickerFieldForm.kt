@@ -60,7 +60,7 @@ fun PickerFieldForm(
                     readOnly = true,
                     enabled = false,
                     textStyle = TextStyle(
-                        fontSize = DSTypography.Body.Medium,
+                        fontSize = DSTypography.Body.Small,
                         color = DSColours.OnSurface
                     ),
                     leadingIcon = {

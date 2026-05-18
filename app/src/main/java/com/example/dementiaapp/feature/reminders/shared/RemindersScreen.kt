@@ -18,7 +18,7 @@ fun RemindersScreen(
 ) {
     val viewModel: RemindersViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
-    val user by viewModel.user.collectAsStateWithLifecycle()
+    val user = state.user
 
     val canAdd = viewModel.hasAccessToAction(FeatureAction.ADD)
     val canEdit = canAdd
@@ -30,7 +30,7 @@ fun RemindersScreen(
         viewModel.refresh()
     }
 
-    if (user?.role == UserRole.CARE_RECIPIENT) {
+    if (user.role == UserRole.CARE_RECIPIENT) {
         CRRemindersScreen(
             viewModel,
             onAddOrEditReminder

@@ -6,12 +6,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class UserStateHolder(
-    private val userRepository: UserRepository
+    userRepository: UserRepository
 ) {
-    private val _currentUser = MutableStateFlow<User?>(null)
+    private val _currentUser = MutableStateFlow<User>(
+        userRepository.getCurrentUser()
+    )
     val currentUser = _currentUser.asStateFlow()
-
-    init {
-        _currentUser.value = userRepository.getCurrentUser()
-    }
 }

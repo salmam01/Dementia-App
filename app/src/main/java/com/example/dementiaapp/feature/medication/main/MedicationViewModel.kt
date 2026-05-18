@@ -6,6 +6,7 @@ import com.example.dementiaapp.domain.configuration.PermissionsManager
 import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.FeatureType
 import com.example.dementiaapp.domain.models.Medication
+import com.example.dementiaapp.domain.state.AppStateHolder
 import com.example.dementiaapp.domain.state.DateStateHolder
 import com.example.dementiaapp.repository.features.MedicationRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +19,7 @@ import java.time.LocalDate
 class MedicationViewModel(
     private val medicationRepository: MedicationRepository,
     private val dateStateHolder: DateStateHolder,
-    private val permissionsManager: PermissionsManager
+    private val appStateHolder: AppStateHolder
 ): ViewModel() {
     private val _state = MutableStateFlow(MedicationState(
         selectedDate = dateStateHolder.selectedDate.value
@@ -53,7 +54,7 @@ class MedicationViewModel(
     fun hasAccessToAction(
         action: FeatureAction
     ): Boolean {
-        return permissionsManager.hasPermission(
+        return appStateHolder.appState.value.permissionsPolicy.canPerform(
             action = action,
             featureType = FeatureType.MEDICATION
         )

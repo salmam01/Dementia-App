@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
-import com.example.dementiaapp.util.time.DayTime
+import com.example.dementiaapp.domain.models.DayTime
 import com.example.dementiaapp.util.time.getDayTimeUI
 
 @Composable

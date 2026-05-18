@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
+import com.example.dementiaapp.domain.models.DayTime
 import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.Medication
 import com.example.dementiaapp.domain.time.TimeProvider.toDayTime
@@ -26,7 +27,6 @@ import com.example.dementiaapp.feature.components.time.DatePickerSection
 import com.example.dementiaapp.feature.components.time.DayTimeSection
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
 import com.example.dementiaapp.feature.medication.components.MedicationItem
-import com.example.dementiaapp.util.time.DayTime
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable

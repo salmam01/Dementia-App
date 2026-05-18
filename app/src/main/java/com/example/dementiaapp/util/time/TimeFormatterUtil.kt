@@ -1,4 +1,6 @@
 package com.example.dementiaapp.util.time
+import com.example.dementiaapp.domain.models.DayTime
+import com.example.dementiaapp.domain.models.TimeAdverb
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime

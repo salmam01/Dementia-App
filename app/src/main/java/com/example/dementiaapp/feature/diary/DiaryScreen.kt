@@ -127,7 +127,7 @@ fun DiaryEntry(
         ) {
             Text(
                 text = entry.time.toString(),
-                fontSize = DSTypography.Body.Medium,
+                fontSize = DSTypography.Body.Small,
                 fontWeight = FontWeight.Normal
             )
 

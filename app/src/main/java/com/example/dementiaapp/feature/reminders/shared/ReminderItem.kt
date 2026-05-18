@@ -82,7 +82,7 @@ fun ReminderItem(
                 )
                 Text(
                     text = "from ${item.from}",
-                    fontSize = DSTypography.Body.Medium,
+                    fontSize = DSTypography.Body.Small,
                     fontWeight = FontWeight.Normal
                 )
             }

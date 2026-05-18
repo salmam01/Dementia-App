@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.RemoveRedEye
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -34,7 +32,7 @@ fun ActionButtonVariant(
     icon: ImageVector,
     onClick: () -> Unit,
 
-    fontSize: TextUnit = DSTypography.Body.Medium,
+    fontSize: TextUnit = DSTypography.Body.Small,
     fontWeight: FontWeight = FontWeight.Bold,
 
     contentColour: Color = DSColours.Surface,

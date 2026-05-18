@@ -1,7 +1,6 @@
 package com.example.dementiaapp.feature.profile.main
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,7 +18,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBackIosNew
 import androidx.compose.material.icons.rounded.CreditCard
 import androidx.compose.material.icons.rounded.Settings
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
@@ -195,7 +193,7 @@ fun CarePartnerItem(
 
                 Text(
                     text = carePartner.name,
-                    fontSize = DSTypography.Body.Medium,
+                    fontSize = DSTypography.Body.Small,
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Start,
                     color = DSColours.OnPrimary

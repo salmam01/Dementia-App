@@ -100,7 +100,7 @@ fun TopText(modifier: Modifier = Modifier) {
     ) {
         Text(
             text = "People who are important to you",
-            fontSize = DSTypography.Body.Medium,
+            fontSize = DSTypography.Body.Small,
             fontWeight = FontWeight.SemiBold,
             textAlign = TextAlign.Center,
         )

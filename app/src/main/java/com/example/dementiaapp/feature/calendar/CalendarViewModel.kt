@@ -7,6 +7,7 @@ import com.example.dementiaapp.domain.models.DiaryEntry
 import com.example.dementiaapp.domain.models.FeatureType
 import com.example.dementiaapp.domain.models.Medication
 import com.example.dementiaapp.domain.models.Reminder
+import com.example.dementiaapp.domain.state.AppStateHolder
 import com.example.dementiaapp.domain.state.DateStateHolder
 import com.example.dementiaapp.feature.AllFeatureUI.DiaryUI
 import com.example.dementiaapp.feature.AllFeatureUI.MedicationUI
@@ -22,8 +23,8 @@ import kotlinx.coroutines.flow.update
 import java.time.LocalDate
 
 class CalendarViewModel(
+    private val appStateHolder: AppStateHolder,
     private val dateStateHolder: DateStateHolder,
-    private val permissionsManager: PermissionsManager,
     private val diaryRepository: DiaryRepository,
     private val medicationRepository: MedicationRepository,
     private val remindersRepository: RemindersRepository
@@ -112,14 +113,15 @@ class CalendarViewModel(
     }
 
     fun getFeatureTypes() {
+        val permissionsPolicy = appStateHolder.appState.value.permissionsPolicy
         val calendarFeatureTypes = buildList {
-            if (permissionsManager.hasAccess(FeatureType.DIARY)) {
+            if (permissionsPolicy.isFeatureEnabled(FeatureType.DIARY)) {
                 add(CalendarFeatureTypes.DIARY)
             }
-            if (permissionsManager.hasAccess(FeatureType.MEDICATION)) {
+            if (permissionsPolicy.isFeatureEnabled(FeatureType.MEDICATION)) {
                 add(CalendarFeatureTypes.MEDICATION)
             }
-            if (permissionsManager.hasAccess(FeatureType.REMINDERS)) {
+            if (permissionsPolicy.isFeatureEnabled(FeatureType.REMINDERS)) {
                 add(CalendarFeatureTypes.REMINDERS)
             }
         }

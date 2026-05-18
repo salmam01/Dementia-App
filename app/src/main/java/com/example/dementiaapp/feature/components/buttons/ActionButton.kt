@@ -39,7 +39,7 @@ fun ActionButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 
-    fontSize: TextUnit = DSTypography.Body.Medium,
+    fontSize: TextUnit = DSTypography.Body.Small,
     fontWeight: FontWeight = FontWeight.Bold,
 
     contentDescription: String? = null,

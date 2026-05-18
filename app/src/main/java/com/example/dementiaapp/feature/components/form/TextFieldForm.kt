@@ -57,7 +57,7 @@ fun TextFieldForm(
                 onValueChange = onValueChange,
                 shape = RoundedCornerShape(DSDimensions.CornerRadius1),
                 textStyle = TextStyle(
-                    fontSize = DSTypography.Body.Medium
+                    fontSize = DSTypography.Body.Small
                 ),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = colour,

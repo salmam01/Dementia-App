@@ -10,51 +10,51 @@ object DefaultPermissions {
     val defaultCaregiverPermissions = UserPermissions(
         featurePermissions = listOf(
             FeaturePermissions(
-                feature = AllFeatures.Calendar,
+                feature = AppFeatures.Calendar,
                 isEnabled = true,
-                permittedActions = AllFeatures.Calendar
+                permittedActions = AppFeatures.Calendar
                     .createDefaultActionPermission(true)
             ),
             FeaturePermissions(
-                feature = AllFeatures.Diary,
+                feature = AppFeatures.Diary,
                 isEnabled = false,
-                permittedActions = AllFeatures.Diary
+                permittedActions = AppFeatures.Diary
                     .createDefaultActionPermission(false)
             ),
             FeaturePermissions(
-                feature = AllFeatures.MyFamily,
+                feature = AppFeatures.MyFamily,
                 isEnabled = false,
-                permittedActions = AllFeatures.MyFamily
+                permittedActions = AppFeatures.MyFamily
                     .createDefaultActionPermission(false)
             ),
             FeaturePermissions(
-                feature = AllFeatures.Medication,
+                feature = AppFeatures.Medication,
                 isEnabled = true,
-                permittedActions = AllFeatures.Medication
+                permittedActions = AppFeatures.Medication
                     .createDefaultActionPermission(true)
             ),
             FeaturePermissions(
-                feature = AllFeatures.Reminders,
+                feature = AppFeatures.Reminders,
                 isEnabled = true,
-                permittedActions = AllFeatures.Reminders
+                permittedActions = AppFeatures.Reminders
                     .createDefaultActionPermission(true)
             ),
             FeaturePermissions(
-                feature = AllFeatures.Call,
+                feature = AppFeatures.Call,
                 isEnabled = true,
-                permittedActions = AllFeatures.Call
+                permittedActions = AppFeatures.Call
                     .createDefaultActionPermission(true)
             ),
             FeaturePermissions(
-                feature = AllFeatures.Logs,
+                feature = AppFeatures.Logs,
                 isEnabled = true,
-                permittedActions = AllFeatures.Logs
+                permittedActions = AppFeatures.Logs
                     .createDefaultActionPermission(true)
             ),
             FeaturePermissions(
-                feature = AllFeatures.Profile,
+                feature = AppFeatures.Profile,
                 isEnabled = true,
-                permittedActions = AllFeatures.Profile
+                permittedActions = AppFeatures.Profile
                     .createDefaultActionPermission(true)
             )
         ),
@@ -77,51 +77,51 @@ object DefaultPermissions {
     val defaultCareRecipientPermissions = UserPermissions(
         featurePermissions = listOf(
             FeaturePermissions(
-                feature = AllFeatures.Calendar,
+                feature = AppFeatures.Calendar,
                 isEnabled = true,
-                permittedActions = AllFeatures.Calendar
+                permittedActions = AppFeatures.Calendar
                     .createDefaultActionPermission(true)
             ),
             FeaturePermissions(
-                feature = AllFeatures.Diary,
+                feature = AppFeatures.Diary,
                 isEnabled = true,
-                permittedActions = AllFeatures.Diary
+                permittedActions = AppFeatures.Diary
                     .createDefaultActionPermission(true)
             ),
             FeaturePermissions(
-                feature = AllFeatures.MyFamily,
+                feature = AppFeatures.MyFamily,
                 isEnabled = true,
-                permittedActions = AllFeatures.MyFamily
+                permittedActions = AppFeatures.MyFamily
                     .createDefaultActionPermission(true)
             ),
             FeaturePermissions(
-                feature = AllFeatures.Medication,
+                feature = AppFeatures.Medication,
                 isEnabled = true,
-                permittedActions = AllFeatures.Medication
+                permittedActions = AppFeatures.Medication
                     .createDefaultActionPermission(false)
             ),
             FeaturePermissions(
-                feature = AllFeatures.Reminders,
+                feature = AppFeatures.Reminders,
                 isEnabled = true,
-                permittedActions = AllFeatures.Reminders
+                permittedActions = AppFeatures.Reminders
                     .createDefaultActionPermission(true)
             ),
             FeaturePermissions(
-                feature = AllFeatures.Call,
+                feature = AppFeatures.Call,
                 isEnabled = true,
-                permittedActions = AllFeatures.Call
+                permittedActions = AppFeatures.Call
                     .createDefaultActionPermission(true)
             ),
             FeaturePermissions(
-                feature = AllFeatures.Logs,
+                feature = AppFeatures.Logs,
                 isEnabled = false,
-                permittedActions = AllFeatures.Logs
+                permittedActions = AppFeatures.Logs
                     .createDefaultActionPermission(false)
             ),
             FeaturePermissions(
-                feature = AllFeatures.Profile,
+                feature = AppFeatures.Profile,
                 isEnabled = false,
-                permittedActions = AllFeatures.Profile
+                permittedActions = AppFeatures.Profile
                     .createDefaultActionPermission(false)
             )
         ),

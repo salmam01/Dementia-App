@@ -7,25 +7,13 @@ import androidx.compose.material.icons.rounded.WbTwilight
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.dementiaapp.design.DSColours
+import com.example.dementiaapp.domain.models.DayTime
 
 data class DayTimeUI (
     val name: String,
     val icon: ImageVector,
     val colour: Color
 )
-
-enum class DayTime {
-    MORNING,
-    AFTERNOON,
-    EVENING,
-    NIGHT
-}
-
-enum class TimeAdverb {
-    TODAY,
-    YESTERDAY,
-    TOMORROW
-}
 
 fun getDayTimeUI(dayTime: DayTime): DayTimeUI {
     val name = TimeFormatterUtil.formatDayTime(dayTime)

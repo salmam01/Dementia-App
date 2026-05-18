@@ -17,7 +17,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,7 +36,6 @@ import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
 import com.example.dementiaapp.feature.reminders.shared.RemindersViewModel
 import com.example.dementiaapp.util.time.TimeFormatterUtil
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CRRemindersScreen(
@@ -183,7 +181,7 @@ fun RemindersItem(
                 )
                 Text(
                     text = "from ${item.from}",
-                    fontSize = DSTypography.Body.Medium,
+                    fontSize = DSTypography.Body.Small,
                     fontWeight = FontWeight.Normal
                 )
             }

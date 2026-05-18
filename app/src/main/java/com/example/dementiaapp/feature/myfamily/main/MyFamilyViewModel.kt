@@ -5,14 +5,15 @@ import com.example.dementiaapp.domain.configuration.PermissionsManager
 import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.FeatureType
 import com.example.dementiaapp.domain.models.Person
+import com.example.dementiaapp.domain.state.AppStateHolder
 import com.example.dementiaapp.repository.features.MyFamilyRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 class MyFamilyViewModel(
+    private val appStateHolder: AppStateHolder,
     private val myFamilyRepository: MyFamilyRepository,
-    private val permissionsManager: PermissionsManager
 ): ViewModel() {
     private val _state = MutableStateFlow(MyFamilyState())
     val state = _state.asStateFlow()
@@ -25,7 +26,7 @@ class MyFamilyViewModel(
     fun hasAccessToAction(
         action: FeatureAction
     ): Boolean {
-        return permissionsManager.hasPermission(
+        return appStateHolder.appState.value.permissionsPolicy.canPerform(
             action = action,
             featureType = FeatureType.MY_FAMILY
         )

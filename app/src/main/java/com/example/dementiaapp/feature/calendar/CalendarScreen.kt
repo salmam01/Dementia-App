@@ -33,13 +33,10 @@ import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.domain.models.FeatureType
-import com.example.dementiaapp.domain.time.TimeProvider.toDayTime
 import com.example.dementiaapp.feature.components.time.DatePickerSection
-import com.example.dementiaapp.feature.components.time.DayTimeSection
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
-import com.example.dementiaapp.util.time.DayTime
 import com.example.dementiaapp.util.time.TimeFormatterUtil
 import org.koin.androidx.compose.koinViewModel
 
@@ -128,10 +125,13 @@ fun CalendarEntries(
                 bottom = DSDimensions.AddButtonSpace
             )
     ) {
+        /*
         val grouped = entries
             .groupBy { it.time.toDayTime() }
 
-        DayTime.entries.forEach { dayTime ->
+        DayTimeSection(
+            dayTime =
+        ).entries.forEach { dayTime ->
             val items = grouped[dayTime].orEmpty()
 
             if (items.isNotEmpty()) {
@@ -145,6 +145,7 @@ fun CalendarEntries(
                 }
             }
         }
+         */
     }
 }
 
@@ -189,7 +190,7 @@ fun CalendarEntry(
         ) {
             Text(
                 text = entry.title,
-                fontSize = DSTypography.Element.Large,
+                fontSize = DSTypography.Body.Large,
                 fontWeight = FontWeight.Bold
             )
 
@@ -197,7 +198,7 @@ fun CalendarEntry(
 
             Text(
                 text = TimeFormatterUtil.formatLocalTime(entry.time),
-                fontSize = DSTypography.Body.Medium,
+                fontSize = DSTypography.Body.Small,
             )
         }
 

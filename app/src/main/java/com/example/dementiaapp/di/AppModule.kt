@@ -1,6 +1,7 @@
 package com.example.dementiaapp.di
 
 import com.example.dementiaapp.domain.configuration.PermissionsManager
+import com.example.dementiaapp.domain.state.AppStateHolder
 import com.example.dementiaapp.domain.state.DateStateHolder
 import com.example.dementiaapp.domain.state.UserStateHolder
 import com.example.dementiaapp.feature.calendar.CalendarViewModel
@@ -37,13 +38,17 @@ val appModule = module {
     singleOf(::MyFamilyRepositoryImpl).bind<MyFamilyRepository>()
     singleOf(::RemindersRepositoryImpl).bind<RemindersRepository>()
 
-    /*
-    single<DataStore<Preferences>> {
-        androidContext().dataStore
-    }*/
-    single { DateStateHolder() }
+    single {
+        AppStateHolder(
+            get(),
+            get(),
+            //get()
+        )
+    }
     single { UserStateHolder(get()) }
-    single { PermissionsManager(get()) }
+    //single { ThemeStateHolder(get()) }
+    single { PermissionsManager() }
+    single { DateStateHolder() }
 
     // ViewModels
     viewModelOf(::HomeViewModel)

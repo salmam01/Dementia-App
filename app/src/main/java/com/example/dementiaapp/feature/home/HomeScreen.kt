@@ -221,7 +221,7 @@ fun FeatureItems(
         Text(
             text = item.ui.name,
             color = DSColours.OnSurface,
-            fontSize = DSTypography.Element.Large,
+            fontSize = DSTypography.Body.Large,
             fontWeight = FontWeight.Bold
         )
     }

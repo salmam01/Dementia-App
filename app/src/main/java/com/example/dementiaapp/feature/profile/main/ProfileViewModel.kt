@@ -4,13 +4,14 @@ import androidx.lifecycle.ViewModel
 import com.example.dementiaapp.domain.configuration.PermissionsManager
 import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.FeatureType
+import com.example.dementiaapp.domain.state.AppStateHolder
 import com.example.dementiaapp.repository.UserRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class ProfileViewModel(
-    private val userRepository: UserRepository,
-    private val permissionsManager: PermissionsManager
+    private val appStateHolder: AppStateHolder,
+    private val userRepository: UserRepository
 ): ViewModel() {
     private val _state = MutableStateFlow(initializeState())
     val state = _state.asStateFlow()
@@ -38,7 +39,7 @@ class ProfileViewModel(
     fun hasAccessToAction(
         action: FeatureAction
     ): Boolean {
-        return permissionsManager.hasPermission(
+        return appStateHolder.appState.value.permissionsPolicy.canPerform(
             action = action,
             featureType = FeatureType.PROFILE
         )

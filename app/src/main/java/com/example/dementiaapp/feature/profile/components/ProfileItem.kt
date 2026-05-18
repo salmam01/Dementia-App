@@ -85,7 +85,7 @@ fun ProfileItem(
 
                 Text(
                     text = description,
-                    fontSize = DSTypography.Body.Medium,
+                    fontSize = DSTypography.Body.Small,
                     fontWeight = FontWeight.Normal,
                     textAlign = TextAlign.Start
                 )

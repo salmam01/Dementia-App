@@ -3,6 +3,7 @@ package com.example.dementiaapp.feature.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dementiaapp.domain.configuration.PermissionsManager
+import com.example.dementiaapp.domain.state.AppStateHolder
 import com.example.dementiaapp.feature.mapFeaturesToFeaturesItems
 import com.example.dementiaapp.repository.UserRepository
 import com.example.dementiaapp.util.time.TimeFormatterUtil
@@ -15,13 +16,12 @@ import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
 class HomeViewModel(
-    private val userRepository: UserRepository,
-    private val permissionsManager: PermissionsManager
+    appStateHolder: AppStateHolder
 ): ViewModel() {
     private val _state = MutableStateFlow(HomeState(
-        user = userRepository.getCurrentUser(),
+        user = appStateHolder.appState.value.user,
         features = mapFeaturesToFeaturesItems(
-            features = permissionsManager.getAllFeaturesWithAccess()
+            features = appStateHolder.appState.value.features
         )
     ))
     val state = _state.asStateFlow()
