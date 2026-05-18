@@ -4,7 +4,7 @@ import com.example.dementiaapp.domain.models.Feature
 import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.FeatureType
 
-object AllFeatures {
+object AppFeatures {
     val Calendar = Feature(
         type = FeatureType.CALENDAR,
         actions = listOf(
