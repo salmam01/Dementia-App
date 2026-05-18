@@ -1,10 +1,10 @@
-package com.example.dementiaapp.feature.reminders.manage
+package com.example.dementiaapp.feature.reminders.form
 
 import com.example.dementiaapp.domain.models.Reminder
 import java.time.LocalDate
 import java.time.LocalTime
 
-data class ManageRemindersState(
+data class RemindersFormState(
     val isEditing: Boolean = false,
     val selectedReminder: Reminder ?= null,
     val draftReminder: Reminder = Reminder(

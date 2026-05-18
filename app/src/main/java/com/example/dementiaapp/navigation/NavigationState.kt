@@ -9,7 +9,6 @@ import androidx.compose.runtime.saveable.rememberSerializable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
-import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
@@ -82,14 +81,15 @@ val serializersConfig = SavedStateConfiguration {
             subclass(Route.MyData::class, Route.MyData.serializer())
             subclass(Route.Calendar::class, Route.Calendar.serializer())
             subclass(Route.Diary::class, Route.Diary.serializer())
+            subclass(Route.DiaryForm::class, Route.DiaryForm.serializer())
             subclass(Route.MyFamily::class, Route.MyFamily.serializer())
             subclass(Route.MyFamilyDetails::class, Route.MyFamilyDetails.serializer())
-            subclass(Route.ManageMyFamily::class, Route.ManageMyFamily.serializer())
+            subclass(Route.MyFamilyForm::class, Route.MyFamilyForm.serializer())
             subclass(Route.Medication::class, Route.Medication.serializer())
             subclass(Route.AllMedications::class, Route.AllMedications.serializer())
-            subclass(Route.ManageMedication::class, Route.ManageMedication.serializer())
+            subclass(Route.MedicationForm::class, Route.MedicationForm.serializer())
             subclass(Route.Reminders::class, Route.Reminders.serializer())
-            subclass(Route.ManageReminders::class, Route.ManageReminders.serializer())
+            subclass(Route.RemindersForm::class, Route.RemindersForm.serializer())
             subclass(Route.Logs::class, Route.Logs.serializer())
         }
     }

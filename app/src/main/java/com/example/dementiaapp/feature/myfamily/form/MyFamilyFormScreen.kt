@@ -1,5 +1,6 @@
-package com.example.dementiaapp.feature.myfamily.manage
+package com.example.dementiaapp.feature.myfamily.form
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,17 +19,19 @@ import com.example.dementiaapp.feature.components.buttons.FormButtons
 import com.example.dementiaapp.feature.components.TitleSection
 import com.example.dementiaapp.feature.components.form.DatePickerForm
 import com.example.dementiaapp.feature.components.form.TextFieldForm
+import com.example.dementiaapp.localization.LocalizedStrings
 import org.koin.compose.viewmodel.koinViewModel
 import java.time.LocalDate
 
 @Composable
-fun ManageMyFamilyScreen(
+fun MyFamilyFormScreen(
     selectedEntryId: String?,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val viewModel: ManageMyFamilyViewModel = koinViewModel()
+    val viewModel: MyFamilyFormViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val strings = LocalizedStrings.current
 
     if (selectedEntryId != null) {
         viewModel.getEntryById(id = selectedEntryId)
@@ -36,9 +39,8 @@ fun ManageMyFamilyScreen(
 
     val isEditing = state.isEditing
     val title =
-        if (isEditing) "Edit ${state.selectedEntry?.fullName}"
-        else "Add Person"
-
+        if (isEditing) "${strings.edit} ${state.selectedEntry?.fullName}"
+        else "${strings.add} ${strings.person}"
     val icon =
         if (isEditing) Icons.Rounded.Edit
         else Icons.Rounded.Add
@@ -46,6 +48,7 @@ fun ManageMyFamilyScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
+            .background(DSColours.Surface)
     ) {
         TitleSection(
             title = title,
@@ -53,7 +56,7 @@ fun ManageMyFamilyScreen(
             colour = DSColours.FeatureColours.MyFamily.Primary
         )
 
-        ManageMyFamilyForm(
+        MyFamilyFormContent(
             draftEntry = state.draftEntry,
             onFullNameChange = { viewModel.setFullName(it) },
             onNickNameChange = { viewModel.setNickName(it) },
@@ -87,7 +90,7 @@ fun ManageMyFamilyScreen(
 }
 
 @Composable
-fun ManageMyFamilyForm(
+fun MyFamilyFormContent(
     draftEntry: Person,
     onFullNameChange: (String) -> Unit,
     onNickNameChange: (String) -> Unit,
@@ -102,27 +105,29 @@ fun ManageMyFamilyForm(
     onFavouriteMusicChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
+
     Column(
         modifier = modifier
             .fillMaxWidth()
             .verticalScroll(rememberScrollState())
     ) {
         TextFieldForm(
-            label = "Full Name",
+            label = strings.fullName,
             initialValue = draftEntry.fullName,
             onValueChange = onFullNameChange,
             colour = DSColours.FeatureColours.MyFamily.Primary
         )
 
         TextFieldForm(
-            label = "Nickname",
+            label = strings.nickname,
             initialValue = draftEntry.nickName ?: "",
             onValueChange = onNickNameChange,
             colour = DSColours.FeatureColours.MyFamily.Primary
         )
 
         TextFieldForm(
-            label = "Relationship",
+            label = strings.relationship,
             initialValue = draftEntry.relationShip,
             onValueChange = onRelationShipChange,
             colour = DSColours.FeatureColours.MyFamily.Primary
@@ -135,53 +140,52 @@ fun ManageMyFamilyForm(
         )
 
         TextFieldForm(
-            label = "Address",
+            label = strings.address,
             initialValue = draftEntry.address ?: "",
             onValueChange = onAddressChange,
             colour = DSColours.FeatureColours.MyFamily.Primary
         )
 
         TextFieldForm(
-            label = "Number",
+            label = strings.number,
             initialValue = draftEntry.number ?: "",
             onValueChange = onNumberChange,
             colour = DSColours.FeatureColours.MyFamily.Primary
         )
 
         TextFieldForm(
-            label = "Hobbies",
+            label = strings.hobbies,
             initialValue = draftEntry.hobbies ?: "",
             onValueChange = onHobbiesChange,
             colour = DSColours.FeatureColours.MyFamily.Primary
         )
 
         TextFieldForm(
-            label = "Favourite Colour",
+            label = strings.favouriteColour,
             initialValue = draftEntry.favouriteColour ?: "",
             onValueChange = onFavouriteColourChange,
             colour = DSColours.FeatureColours.MyFamily.Primary
         )
 
         TextFieldForm(
-            label = "Favourite Book",
+            label = strings.favouriteBook,
             initialValue = draftEntry.favouriteBook ?: "",
             onValueChange = onFavouriteBookChange,
             colour = DSColours.FeatureColours.MyFamily.Primary
         )
 
         TextFieldForm(
-            label = "Favourite Food",
+            label = strings.favouriteFood,
             initialValue = draftEntry.favouriteFood ?: "",
             onValueChange = onFavouriteFoodChange,
             colour = DSColours.FeatureColours.MyFamily.Primary
         )
 
         TextFieldForm(
-            label = "Favourite Music",
+            label = strings.favouriteMusic,
             initialValue = draftEntry.favouriteMusic ?: "",
             onValueChange = onFavouriteMusicChange,
             colour = DSColours.FeatureColours.MyFamily.Primary
         )
-
     }
 }

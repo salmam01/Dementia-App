@@ -42,15 +42,6 @@ class DiaryViewModel(
         _state.update { it.copy(diaryEntry = result) }
     }
 
-    fun addDiaryEntry(entry: DiaryEntry) {
-
-    }
-
-    fun editDiaryEntry(entry: DiaryEntry) {
-        diaryRepository.editEntry(entry)
-        _state.update { it.copy(diaryEntry = entry) }
-    }
-
     fun deleteDiaryEntry(entry: DiaryEntry) {
         diaryRepository.deleteEntry(entry)
         _state.update { it.copy(
@@ -69,4 +60,8 @@ class DiaryViewModel(
 
     fun nextDay() = dateStateHolder.nextDay()
     fun previousDay() = dateStateHolder.previousDay()
+
+    fun refresh() {
+        getDiaryEntry(state.value.selectedDate)
+    }
 }

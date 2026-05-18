@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
+import com.example.dementiaapp.localization.LocalizedStrings
 
 @Composable
 fun AddOrSaveButton(
@@ -32,10 +33,10 @@ fun AddOrSaveButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
     val label =
-        text ?: if (isEditing) "Save"
-                else "Add"
-
+        text ?: if (isEditing) strings.save
+                else strings.add
     val icon =
         if (isEditing) Icons.Rounded.Check
         else Icons.Rounded.Add
@@ -58,7 +59,7 @@ fun AddOrSaveButton(
         ) {
             Icon(
                 imageVector = icon,
-                contentDescription = "Confirm",
+                contentDescription = label,
                 modifier = Modifier
                     .size(DSDimensions.Icon5)
             )

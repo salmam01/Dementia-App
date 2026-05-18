@@ -6,14 +6,15 @@ import com.example.dementiaapp.domain.state.DateStateHolder
 import com.example.dementiaapp.domain.state.UserStateHolder
 import com.example.dementiaapp.feature.calendar.CalendarViewModel
 import com.example.dementiaapp.feature.diary.DiaryViewModel
+import com.example.dementiaapp.feature.diary.form.DiaryFormViewModel
 import com.example.dementiaapp.feature.home.HomeViewModel
 import com.example.dementiaapp.feature.medication.management.ManageMedicationViewModel
 import com.example.dementiaapp.feature.medication.main.MedicationViewModel
 import com.example.dementiaapp.feature.myfamily.main.MyFamilyViewModel
-import com.example.dementiaapp.feature.myfamily.manage.ManageMyFamilyViewModel
+import com.example.dementiaapp.feature.myfamily.form.MyFamilyFormViewModel
 import com.example.dementiaapp.feature.profile.main.ProfileViewModel
 import com.example.dementiaapp.feature.reminders.shared.RemindersViewModel
-import com.example.dementiaapp.feature.reminders.manage.ManageRemindersViewModel
+import com.example.dementiaapp.feature.reminders.form.RemindersFormViewModel
 import com.example.dementiaapp.repository.features.DiaryRepository
 import com.example.dementiaapp.repository.features.DiaryRepositoryImpl
 import com.example.dementiaapp.repository.features.MedicationRepository
@@ -30,7 +31,6 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val appModule = module {
-
     // Repositories
     singleOf(::UserRepositoryImpl).bind<UserRepository>()
     singleOf(::DiaryRepositoryImpl).bind<DiaryRepository>()
@@ -56,9 +56,10 @@ val appModule = module {
     viewModelOf(::MedicationViewModel)
     viewModelOf(::ManageMedicationViewModel)
     viewModelOf(::DiaryViewModel)
+    viewModelOf(::DiaryFormViewModel)
     viewModelOf(::MyFamilyViewModel)
-    viewModelOf(::ManageMyFamilyViewModel)
+    viewModelOf(::MyFamilyFormViewModel)
     viewModelOf(::RemindersViewModel)
-    viewModelOf(::ManageRemindersViewModel)
+    viewModelOf(::RemindersFormViewModel)
     viewModelOf(::ProfileViewModel)
 }

@@ -29,6 +29,8 @@ object DeStrings: Strings {
     override val cancel: String = "Abbrechen"
     override val yes: String = "Ja"
     override val no: String = "Nein"
+    override val confirm: String = "Bestätigen"
+
     override val warning: String = "Achtung"
     override val confirmationDialogue: String = "Sind Sie sicher, dass Sie"
 
@@ -38,5 +40,24 @@ object DeStrings: Strings {
     override val repeat: String = ""
     override val notes: String = ""
     override val allMedications: String = "Alle Medikamente"
+
     override val reminder: String = "Erinnerung"
+    override val message: String = "Nachricht"
+
+    // Diary screen
+    override val title: String = "Titel"
+    override val content: String = "Inhalt"
+
+    // My Family screen
+    override val person: String = "Person"
+    override val fullName: String = "Vollständiger Name"
+    override val nickname: String = "Spitzname"
+    override val relationship: String = "Beziehung"
+    override val address: String = "Adresse"
+    override val number: String = "Nummer"
+    override val hobbies: String = "Hobbies"
+    override val favouriteColour: String = "Lieblingsfarbe"
+    override val favouriteBook: String = "Lieblingsbuch"
+    override val favouriteFood: String = "Lieblingsessen"
+    override val favouriteMusic: String = "Lieblingsmusik"
 }

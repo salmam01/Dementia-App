@@ -1,5 +1,6 @@
 package com.example.dementiaapp.feature.components.form
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -31,6 +32,7 @@ fun TextFieldForm(
     initialValue: String,
     onValueChange: (String) -> Unit,
     colour: Color,
+    backgroundColour: Color = DSColours.Surface,
     modifier: Modifier = Modifier
 ) {
     var isFocused by remember { mutableStateOf(false) }
@@ -38,6 +40,7 @@ fun TextFieldForm(
     Column(
         modifier = modifier
             .fillMaxWidth()
+            .background(backgroundColour)
     ) {
         Column(
             modifier = Modifier
@@ -60,6 +63,8 @@ fun TextFieldForm(
                     fontSize = DSTypography.Body.Small
                 ),
                 colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = DSColours.Surface,
+                    unfocusedContainerColor = DSColours.Surface,
                     focusedBorderColor = colour,
                     unfocusedBorderColor = DSColours.Divider,
                 ),

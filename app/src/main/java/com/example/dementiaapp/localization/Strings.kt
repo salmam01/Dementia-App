@@ -29,6 +29,7 @@ interface Strings {
     val cancel: String
     val yes: String
     val no: String
+    val confirm: String
 
     val warning: String
     val confirmationDialogue: String
@@ -42,4 +43,22 @@ interface Strings {
 
     // Reminders screen
     val reminder: String
+    val message: String
+
+    // Diary screen
+    val title: String
+    val content: String
+
+    // My Family screen
+    val person: String
+    val fullName: String
+    val nickname: String
+    val relationship: String
+    val address: String
+    val number: String
+    val hobbies: String
+    val favouriteColour: String
+    val favouriteBook: String
+    val favouriteFood: String
+    val favouriteMusic: String
 }

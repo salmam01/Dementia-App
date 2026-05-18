@@ -1,7 +1,8 @@
-package com.example.dementiaapp.feature.reminders.manage
+package com.example.dementiaapp.feature.reminders.form
 
 import androidx.lifecycle.ViewModel
 import com.example.dementiaapp.domain.models.Reminder
+import com.example.dementiaapp.domain.state.AppStateHolder
 import com.example.dementiaapp.repository.features.RemindersRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -10,10 +11,11 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 
-class ManageRemindersViewModel(
+class RemindersFormViewModel(
+    private val appStateHolder: AppStateHolder,
     private val remindersRepository: RemindersRepository
 ): ViewModel() {
-    private val _state = MutableStateFlow(ManageRemindersState())
+    private val _state = MutableStateFlow(RemindersFormState())
     val state = _state.asStateFlow()
 
     fun getReminderById(id: String) {
@@ -29,7 +31,6 @@ class ManageRemindersViewModel(
                 remindersRepository.editReminder(state.value.draftReminder)
             } else {
                 remindersRepository.addReminder(state.value.draftReminder)
-                println("Added Reminder")
             }
         }
     }
@@ -77,8 +78,7 @@ class ManageRemindersViewModel(
 
     fun setFrom() {
         _state.update {
-            val newDraft = it.draftReminder.copy(from = "Me")
-
+            val newDraft = it.draftReminder.copy(from = appStateHolder.appState.value.user.name)
             it.copy(
                 draftReminder = newDraft,
                 isValid = validateReminder(newDraft)
@@ -112,7 +112,7 @@ class ManageRemindersViewModel(
                 message = "",
                 date = LocalDate.now(),
                 time = LocalTime.now().plusHours(1),
-                from = "Me",
+                from = appStateHolder.appState.value.user.name,
                 completed = false
             )
         ) }

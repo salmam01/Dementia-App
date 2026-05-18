@@ -1,7 +1,6 @@
 package com.example.dementiaapp.navigation
 
 import androidx.navigation3.runtime.NavKey
-import com.example.dementiaapp.domain.models.User
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -27,14 +26,17 @@ sealed interface Route: NavKey {
 
     @Serializable
     data object Diary: Route
-
+    @Serializable
+    data class DiaryForm(
+        val entryId: String?
+    ): Route
 
     @Serializable
     data object MyFamily: Route
     @Serializable
     data object MyFamilyDetails: Route
     @Serializable
-    data class ManageMyFamily(
+    data class MyFamilyForm(
         val selectedEntryId: String?
     ): Route
 
@@ -43,14 +45,14 @@ sealed interface Route: NavKey {
     @Serializable
     data object AllMedications: Route
     @Serializable
-    data class ManageMedication(
+    data class MedicationForm(
         val selectedMedicationId: String?
     ): Route
 
     @Serializable
     data object Reminders: Route
     @Serializable
-    data class ManageReminders(
+    data class RemindersForm(
         val selectedReminderId: String?
     ): Route
 
@@ -66,14 +68,15 @@ fun NavKey.title(): String = when (this) {
     Route.MyData -> "My Information"
     Route.Calendar -> "Calendar"
     Route.Diary -> "Diary"
+    is Route.DiaryForm -> "Diary"
     Route.MyFamily -> "My Family"
     Route.MyFamilyDetails -> "My Family"
-    is Route.ManageMyFamily -> "Manage Entry"
+    is Route.MyFamilyForm -> "My Family"
     Route.Medication -> "Medication"
     Route.AllMedications -> "All Medications"
-    is Route.ManageMedication -> "Manage Medication"
+    is Route.MedicationForm -> "Medication"
     Route.Reminders -> "Reminders"
-    is Route.ManageReminders -> "Manage Reminder"
+    is Route.RemindersForm -> "Reminders"
     Route.Logs -> "Logs"
     else -> ""
 }

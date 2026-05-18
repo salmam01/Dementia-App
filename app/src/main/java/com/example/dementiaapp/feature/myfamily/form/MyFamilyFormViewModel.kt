@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.myfamily.manage
+package com.example.dementiaapp.feature.myfamily.form
 
 import androidx.lifecycle.ViewModel
 import com.example.dementiaapp.domain.models.Person
@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import java.time.LocalDate
 
-class ManageMyFamilyViewModel(
+class MyFamilyFormViewModel(
     private val myFamilyRepository: MyFamilyRepository
 ): ViewModel() {
-    private val _state = MutableStateFlow(ManageMyFamilyState())
+    private val _state = MutableStateFlow(MyFamilyFormState())
     val state = _state.asStateFlow()
 
     fun getEntryById(id: String) {

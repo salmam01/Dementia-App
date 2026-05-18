@@ -29,6 +29,7 @@ object EnStrings: Strings {
     override val cancel: String = "Cancel"
     override val yes: String = "Yes"
     override val no: String = "No"
+    override val confirm: String = "Confirm"
 
     override val warning: String = "Warning"
     override val confirmationDialogue: String = "Are you sure you want to"
@@ -40,6 +41,24 @@ object EnStrings: Strings {
     override val notes: String = "Notes"
     override val allMedications: String = "All Medications"
 
+    // Reminders screen
     override val reminder: String = "Reminder"
+    override val message: String = "Message"
 
+    // Diary screen
+    override val title: String = "Title"
+    override val content: String = "Content"
+
+    // My Family screen
+    override val person: String = "Person"
+    override val fullName: String = "Full Name"
+    override val nickname: String = "Nickname"
+    override val relationship: String = "Relationship"
+    override val address: String = "Address"
+    override val number: String = "Number"
+    override val hobbies: String = "Hobbies"
+    override val favouriteColour: String = "Favourite Colour"
+    override val favouriteBook: String = "Favourite Book"
+    override val favouriteFood: String = "Favourite Food"
+    override val favouriteMusic: String = "Favourite Music"
 }

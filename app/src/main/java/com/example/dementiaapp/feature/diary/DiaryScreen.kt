@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,12 +33,17 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun DiaryScreen(
+    onAddOrEditEntry: (String?) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val viewModel: DiaryViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
     val entry = state.diaryEntry
 
+    LaunchedEffect(Unit) {
+        viewModel.refresh()
+    }
+    
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -58,7 +64,7 @@ fun DiaryScreen(
                 StickyActionButton(
                     text = "Add Entry",
                     colour = DSColours.FeatureColours.Diary.Primary,
-                    onAddClick = { },
+                    onAddClick = { onAddOrEditEntry(null) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .align(Alignment.BottomCenter)
@@ -66,7 +72,7 @@ fun DiaryScreen(
             } else {
                 DiaryEntry(
                     entry = entry,
-                    onEditClick = { },
+                    onEditClick = { onAddOrEditEntry(it) },
                     onDeleteClick = {
                         viewModel.showConfirmationDialog()
                     }
@@ -86,7 +92,7 @@ fun DiaryScreen(
 @Composable
 fun DiaryEntry(
     entry: DiaryEntry,
-    onEditClick: () -> Unit,
+    onEditClick: (String) -> Unit,
     onDeleteClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -139,7 +145,7 @@ fun DiaryEntry(
             ) {
                 ActionButton(
                     style = ActionButtonStyles.Edit,
-                    onClick = onEditClick
+                    onClick = { onEditClick(entry.id) }
                 )
                 Spacer(modifier = Modifier.width(DSDimensions.Space4))
                 ActionButton(
