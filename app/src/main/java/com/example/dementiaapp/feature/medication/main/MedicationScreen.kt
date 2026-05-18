@@ -68,7 +68,7 @@ fun MedicationScreen(
             text = strings.allMedications,
             icon = Icons.Filled.RemoveRedEye,
             colour = DSColours.FeatureColours.Medication.Primary,
-            onAddClick = onNavigate,
+            onClick = onNavigate,
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)

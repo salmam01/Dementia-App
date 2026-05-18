@@ -24,7 +24,7 @@ import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.domain.models.DiaryEntry
-import com.example.dementiaapp.feature.components.ConfirmationDialog
+import com.example.dementiaapp.feature.components.ConfirmationDialogue
 import com.example.dementiaapp.feature.components.time.DatePickerSection
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
@@ -43,7 +43,7 @@ fun DiaryScreen(
     LaunchedEffect(Unit) {
         viewModel.refresh()
     }
-    
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -64,7 +64,7 @@ fun DiaryScreen(
                 StickyActionButton(
                     text = "Add Entry",
                     colour = DSColours.FeatureColours.Diary.Primary,
-                    onAddClick = { onAddOrEditEntry(null) },
+                    onClick = { onAddOrEditEntry(null) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .align(Alignment.BottomCenter)
@@ -78,7 +78,7 @@ fun DiaryScreen(
                     }
                 )
                 if (state.showConfirmationDialog) {
-                    ConfirmationDialog(
+                    ConfirmationDialogue(
                         text = "delete the entry \"${entry.title}\"",
                         onConfirm = { viewModel.deleteDiaryEntry(entry) },
                         onDeny = { viewModel.hideConfirmationDialog() }

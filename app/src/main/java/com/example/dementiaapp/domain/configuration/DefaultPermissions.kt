@@ -40,20 +40,20 @@ object DefaultPermissions {
                     .createDefaultActionPermission(true)
             ),
             FeaturePermissions(
-                feature = AppFeatures.Call,
-                isEnabled = true,
-                permittedActions = AppFeatures.Call
-                    .createDefaultActionPermission(true)
-            ),
-            FeaturePermissions(
                 feature = AppFeatures.Logs,
                 isEnabled = true,
                 permittedActions = AppFeatures.Logs
                     .createDefaultActionPermission(true)
             ),
             FeaturePermissions(
-                feature = AppFeatures.Profile,
+                feature = AppFeatures.Call,
                 isEnabled = true,
+                permittedActions = AppFeatures.Call
+                    .createDefaultActionPermission(true)
+            ),
+            FeaturePermissions(
+                feature = AppFeatures.Profile,
+                isEnabled = false,
                 permittedActions = AppFeatures.Profile
                     .createDefaultActionPermission(true)
             )

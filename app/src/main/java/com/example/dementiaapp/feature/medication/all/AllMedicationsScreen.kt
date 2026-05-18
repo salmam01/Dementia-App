@@ -19,7 +19,7 @@ import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.Medication
-import com.example.dementiaapp.feature.components.ConfirmationDialog
+import com.example.dementiaapp.feature.components.ConfirmationDialogue
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
 import com.example.dementiaapp.feature.medication.components.MedicationItem
 import com.example.dementiaapp.feature.medication.main.MedicationViewModel
@@ -64,7 +64,7 @@ fun AllMedicationsScreen(
         if (state.showConfirmationDialog) {
             val selectedMedication = state.selectedMedication
             if (selectedMedication != null) {
-                ConfirmationDialog(
+                ConfirmationDialogue(
                     text = "${strings.deleteLowerCase} \"${selectedMedication.name}\"",
                     onConfirm = { viewModel.deleteMedication(selectedMedication) },
                     onDeny = { viewModel.hideConfirmationDialog() }
@@ -76,7 +76,7 @@ fun AllMedicationsScreen(
                 text = "Add Medication",
                 icon = Icons.Filled.Add,
                 colour = DSColours.FeatureColours.Medication.Primary,
-                onAddClick = { onAddOrEditMedication(null) },
+                onClick = { onAddOrEditMedication(null) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.BottomCenter)

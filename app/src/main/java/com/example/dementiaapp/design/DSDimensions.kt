@@ -3,6 +3,8 @@ package com.example.dementiaapp.design
 import androidx.compose.ui.unit.dp
 
 object DSDimensions {
+    val screenPadding = 16.dp
+
     val Space1 = 5.dp
     val Space2 = 10.dp
     val Space3 = 15.dp

@@ -80,7 +80,7 @@ fun MyFamilyScreen(
             StickyActionButton(
                 text = "Add Entry",
                 colour = DSColours.FeatureColours.MyFamily.Primary,
-                onAddClick = onAddEntry,
+                onClick = onAddEntry,
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.BottomCenter)

@@ -58,6 +58,9 @@ sealed interface Route: NavKey {
 
     @Serializable
     data object Logs: Route
+
+    @Serializable
+    data object Call: Route
 }
 
 fun NavKey.title(): String = when (this) {
@@ -78,5 +81,6 @@ fun NavKey.title(): String = when (this) {
     Route.Reminders -> "Reminders"
     is Route.RemindersForm -> "Reminders"
     Route.Logs -> "Logs"
+    Route.Call -> "Call"
     else -> ""
 }

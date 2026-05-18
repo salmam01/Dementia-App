@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.reminders.form
+package com.example.dementiaapp.feature.reminders.shared.form
 
 import androidx.lifecycle.ViewModel
 import com.example.dementiaapp.domain.models.Reminder
@@ -112,7 +112,7 @@ class RemindersFormViewModel(
                 message = "",
                 date = LocalDate.now(),
                 time = LocalTime.now().plusHours(1),
-                from = appStateHolder.appState.value.user.name,
+                from = appStateHolder.appState.value.user.name.substringBefore(" "),
                 completed = false
             )
         ) }

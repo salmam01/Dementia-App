@@ -4,6 +4,7 @@ interface Strings {
     val appName: String
     val greeting: String
     val greetingDate: String
+    val placeholderText: String
 
     // Feature names
     val calendar: String
@@ -24,6 +25,7 @@ interface Strings {
     val add: String
     val edit: String
     val delete: String
+    val filter: String
     val deleteLowerCase: String
     val save: String
     val cancel: String
@@ -33,6 +35,10 @@ interface Strings {
 
     val warning: String
     val confirmationDialogue: String
+
+    // Calendar screen
+    val monthView: String
+    val filters: String
 
     // Medication screen
     val dose: String

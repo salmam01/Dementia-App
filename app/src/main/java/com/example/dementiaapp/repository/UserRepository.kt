@@ -42,7 +42,7 @@ class UserRepositoryImpl: UserRepository {
     )
 
     private val currentUser = users.first {
-        it.role == UserRole.CARE_RECIPIENT
+        it.role == UserRole.CAREGIVER
     }
 
     override fun getCurrentUser(): User {

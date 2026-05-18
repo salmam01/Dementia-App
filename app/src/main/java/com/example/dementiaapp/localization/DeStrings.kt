@@ -4,6 +4,7 @@ object DeStrings: Strings {
     override val appName: String = "Dementia App"
     override val greeting: String = "Hallo, "
     override val greetingDate: String = "Heute ist "
+    override val placeholderText: String = "Nothing here yet :)"
 
     // Feature names
     override val calendar: String = "Kalender"
@@ -24,6 +25,7 @@ object DeStrings: Strings {
     override val add: String = "Hinzufügen"
     override val edit: String = "Bearbeiten"
     override val delete: String = "Löschen"
+    override val filter: String = "Filter"
     override val deleteLowerCase: String = "löschen"
     override val save: String = "Speichern"
     override val cancel: String = "Abbrechen"
@@ -33,6 +35,10 @@ object DeStrings: Strings {
 
     override val warning: String = "Achtung"
     override val confirmationDialogue: String = "Sind Sie sicher, dass Sie"
+
+    // Calendar screen
+    override val monthView: String = "Monatsansicht"
+    override val filters: String = "Alle Filter"
 
     // Medication screen
     override val dose: String = "Dosis"

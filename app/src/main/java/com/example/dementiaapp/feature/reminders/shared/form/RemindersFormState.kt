@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.reminders.form
+package com.example.dementiaapp.feature.reminders.shared.form
 
 import com.example.dementiaapp.domain.models.Reminder
 import java.time.LocalDate

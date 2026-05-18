@@ -4,6 +4,7 @@ object EnStrings: Strings {
     override val appName: String = "Dementia App"
     override val greeting: String = "Hello, "
     override val greetingDate: String = "Today is "
+    override val placeholderText: String = "Nothing here yet :)"
 
     // Feature names
     override val calendar: String = "Calendar"
@@ -24,6 +25,7 @@ object EnStrings: Strings {
     override val add: String = "Add"
     override val edit: String = "Edit"
     override val delete: String = "Delete"
+    override val filter: String = "Filter"
     override val deleteLowerCase: String = "delete"
     override val save: String = "Save"
     override val cancel: String = "Cancel"
@@ -33,6 +35,10 @@ object EnStrings: Strings {
 
     override val warning: String = "Warning"
     override val confirmationDialogue: String = "Are you sure you want to"
+
+    // Calendar screen
+    override val monthView: String = "Month View"
+    override val filters: String = "Filters"
 
     // Medication screen
     override val dose: String = "Dose"

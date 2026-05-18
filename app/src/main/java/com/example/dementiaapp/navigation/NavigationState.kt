@@ -91,6 +91,7 @@ val serializersConfig = SavedStateConfiguration {
             subclass(Route.Reminders::class, Route.Reminders.serializer())
             subclass(Route.RemindersForm::class, Route.RemindersForm.serializer())
             subclass(Route.Logs::class, Route.Logs.serializer())
+            subclass(Route.Call::class, Route.Call.serializer())
         }
     }
 }

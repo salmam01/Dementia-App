@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.reminders.form
+package com.example.dementiaapp.feature.reminders.shared.form
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -21,7 +21,6 @@ import com.example.dementiaapp.feature.components.TitleSection
 import com.example.dementiaapp.feature.components.form.DatePickerForm
 import com.example.dementiaapp.feature.components.form.TextFieldForm
 import com.example.dementiaapp.feature.components.form.TimePickerForm
-import com.example.dementiaapp.feature.strings
 import com.example.dementiaapp.localization.LocalizedStrings
 import org.koin.androidx.compose.koinViewModel
 import java.time.LocalDate

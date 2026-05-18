@@ -26,7 +26,10 @@ import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.domain.models.FeatureType
+import com.example.dementiaapp.domain.models.UserRole
+import com.example.dementiaapp.domain.state.AppStateHolder
 import com.example.dementiaapp.feature.calendar.CalendarScreen
+import com.example.dementiaapp.feature.call.CallScreen
 import com.example.dementiaapp.feature.chat.ChatScreen
 import com.example.dementiaapp.feature.diary.DiaryScreen
 import com.example.dementiaapp.feature.diary.form.DiaryFormScreen
@@ -41,12 +44,16 @@ import com.example.dementiaapp.feature.myfamily.form.MyFamilyFormScreen
 import com.example.dementiaapp.feature.profile.carepartner.CarePartnerScreen
 import com.example.dementiaapp.feature.profile.main.ProfileScreen
 import com.example.dementiaapp.feature.profile.mydata.MyDataScreen
-import com.example.dementiaapp.feature.reminders.form.RemindersFormScreen
+import com.example.dementiaapp.feature.reminders.shared.form.RemindersFormScreen
 import com.example.dementiaapp.feature.reminders.shared.RemindersScreen
+import org.koin.compose.koinInject
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavigationRoot(modifier: Modifier = Modifier) {
+    val appState: AppStateHolder = koinInject()
+    val user = appState.appState.value.user
+
     val navigationState = rememberNavigationState(
         startRoute = Route.Home,
         topLevelRoutes = TOP_LEVEL_DESTINATIONS.keys,
@@ -67,7 +74,7 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
             )
         },
         topBar = {
-            if (currentRoute != Route.Home) {
+            if (currentRoute != Route.Home || user.role == UserRole.CAREGIVER) {
                 val colours = TopAppBarDefaults.topAppBarColors(
                     containerColor = DSColours.Primary,
                     titleContentColor = DSColours.OnPrimary,
@@ -149,6 +156,7 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
                                     FeatureType.MEDICATION -> navigator.navigate(Route.Medication)
                                     FeatureType.REMINDERS -> navigator.navigate(Route.Reminders)
                                     FeatureType.LOGS -> navigator.navigate(Route.Logs)
+                                    FeatureType.CALL -> navigator.navigate(Route.Call)
                                     else -> error("Unknown Route")
                                 }
                             }
@@ -165,6 +173,9 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
                                 }
                             }
                         )
+                    }
+                    entry<Route.Call> {
+                        CallScreen()
                     }
                     entry<Route.Diary> {
                         DiaryScreen(

@@ -3,6 +3,7 @@ package com.example.dementiaapp.feature.calendar
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,6 +24,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -38,6 +40,7 @@ import com.example.dementiaapp.feature.AllFeatureUI
 import com.example.dementiaapp.feature.components.CheckBox
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
+import com.example.dementiaapp.localization.LocalizedStrings
 
 @Composable
 fun FilterMenu(
@@ -47,6 +50,7 @@ fun FilterMenu(
     onCancel: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
     var toggledFilters by rememberSaveable {
         mutableStateOf(value = appliedFilters)
     }
@@ -55,12 +59,12 @@ fun FilterMenu(
         color = DSColours.OnSurface.copy(alpha = 0.8f),
         modifier = modifier
             .fillMaxSize()
+            .clickable(onClick = onCancel)
     ) {
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .fillMaxSize()
-                .clickable(onClick = onCancel)
                 .padding(DSDimensions.Space4)
         ) {
             Column(
@@ -69,6 +73,10 @@ fun FilterMenu(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(DSDimensions.CornerRadius1))
+                    .clickable(
+                        indication = null,
+                        interactionSource = remember { MutableInteractionSource() }
+                    ) { }
                     .border(
                         width = DSDimensions.BorderRadius4,
                         color = DSColours.FeatureColours.Calendar.Primary,
@@ -85,7 +93,7 @@ fun FilterMenu(
                 ) {
                     Icon(
                         imageVector = Icons.Rounded.Tune,
-                        contentDescription = "Filter",
+                        contentDescription = strings.filter,
                         tint = DSColours.FeatureColours.Calendar.Primary,
                         modifier = Modifier
                             .size(DSDimensions.Icon6)
@@ -94,7 +102,7 @@ fun FilterMenu(
                     Spacer(modifier = Modifier.width(DSDimensions.Space3))
 
                     Text(
-                        text = "Filters",
+                        text = strings.filters,
                         fontSize = DSTypography.Headline.Large,
                         fontWeight = FontWeight.Bold
                     )

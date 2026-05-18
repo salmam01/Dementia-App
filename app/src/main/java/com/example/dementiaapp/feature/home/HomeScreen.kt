@@ -35,6 +35,7 @@ import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.domain.models.FeatureType
+import com.example.dementiaapp.domain.models.UserRole
 import com.example.dementiaapp.feature.FeatureItem
 import com.example.dementiaapp.localization.LocalizedStrings
 import org.koin.androidx.compose.koinViewModel
@@ -53,189 +54,18 @@ fun HomeScreen(
             .fillMaxSize()
             .background(DSColours.Accent)
     ) {
-        HomeTopBar(state)
-        Features(
-            carePartnerName = viewModel.getCarePartnerName(),
-            features = features,
-            onFeatureClick = onNavigate
-        )
-    }
-}
-
-@Composable
-fun HomeTopBar(
-    state: HomeState,
-    modifier: Modifier = Modifier
-) {
-    val strings = LocalizedStrings.current
-    val firstName = state.user.name.substringBefore(" ")
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .shadow(
-                elevation = 4.dp,
-                shape = RectangleShape,
-                clip = false
+        if (state.user.role == UserRole.CAREGIVER) {
+            CGHomeContent(
+                state = state,
+                carePartnerName = viewModel.getCarePartnerName(),
+                onFeatureClick = onNavigate
             )
-            .background(DSColours.Primary)
-            .padding(vertical = DSDimensions.Space4),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(DSDimensions.Space2),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = strings.greeting + firstName,
-                color = DSColours.OnPrimary,
-                fontSize = DSTypography.Display.Medium,
-                fontWeight = FontWeight.Bold
-            )
-            Icon(
-                imageVector = Icons.Outlined.SentimentSatisfied,
-                contentDescription = null,
-                tint = DSColours.OnPrimary,
-                modifier = Modifier.size(DSDimensions.Icon6)
+        } else {
+            CRHomeContent(
+                state = state,
+                carePartnerName = viewModel.getCarePartnerName(),
+                onFeatureClick = onNavigate
             )
         }
-
-        Spacer(modifier = Modifier.height(DSDimensions.Space4))
-
-        Text(
-            text = "${strings.greetingDate}${state.currentDay}, ${state.currentDate}",
-            color = DSColours.OnPrimary,
-            fontSize = DSTypography.Headline.Medium,
-            fontWeight = FontWeight.Medium
-        )
-
-        Spacer(modifier = Modifier.height(DSDimensions.Space2))
-
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(DSDimensions.Space2),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                imageVector = Icons.Rounded.WbSunny,
-                contentDescription = null,
-                tint = DSColours.DayTime,
-                modifier = Modifier.size(DSDimensions.Icon6)
-            )
-            Text(
-                text = "${state.currentTime}",
-                color = DSColours.OnPrimary,
-                fontSize = DSTypography.Display.Medium,
-                fontWeight = FontWeight.Bold
-            )
-        }
-    }
-}
-
-@Composable
-fun Features(
-    carePartnerName: String,
-    features: List<FeatureItem>,
-    onFeatureClick: (FeatureType) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    val (even, odd) = features
-        .withIndex()
-        .partition { it.index % 2 == 0 }
-        .let { (even, odd) ->
-            even.map { it.value } to odd.map { it.value }
-        }
-
-    println(even)
-    println(odd)
-
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-    ) {
-        Column(
-            verticalArrangement = Arrangement.spacedBy(DSDimensions.Space4)
-        ) {
-            even.forEach { featureUI ->
-                FeatureItems(
-                    carePartnerName = carePartnerName,
-                    item = featureUI,
-                    onClick = { onFeatureClick(featureUI.feature.type) }
-                )
-            }
-        }
-
-        Spacer(modifier = Modifier.width(DSDimensions.Space4))
-
-        Column(
-            verticalArrangement = Arrangement.spacedBy(DSDimensions.Space4)
-        ) {
-            odd.forEach { featureUI ->
-                FeatureItems(
-                    carePartnerName = carePartnerName,
-                    item = featureUI,
-                    onClick = { onFeatureClick(featureUI.feature.type) }
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun FeatureItems(
-    carePartnerName: String,
-    item: FeatureItem,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    val borderColour = if (item.feature.type == FeatureType.CALL) {
-        DSColours.FeatureColours.Call.Primary
-    } else {
-        DSColours.Primary
-    }
-
-    val backgroundColour = if (item.feature.type == FeatureType.CALL) {
-        DSColours.FeatureColours.Call.Container
-    } else {
-        DSColours.Surface
-    }
-
-    val itemName = if (item.feature.type == FeatureType.CALL) {
-        "${item.ui.name} " + carePartnerName
-    } else {
-        item.ui.name
-    }
-
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier
-            .size(
-                height = DSDimensions.Element1,
-                width = DSDimensions.Element1)
-            .clip(RoundedCornerShape(DSDimensions.CornerRadius3))
-            .background(backgroundColour)
-            .border(
-                width = DSDimensions.BorderRadius4,
-                color = borderColour,
-                shape = RoundedCornerShape(DSDimensions.CornerRadius3)
-            )
-            .clickable(onClick = onClick)
-            .padding(DSDimensions.Space2)
-    ) {
-        Icon(
-            imageVector = item.ui.icon,
-            contentDescription = null,
-            tint = item.ui.colour,
-            modifier = Modifier.size(DSDimensions.Icon9)
-        )
-        Spacer(modifier = Modifier.height(DSDimensions.Space1))
-        Text(
-            text = itemName,
-            color = DSColours.OnSurface,
-            fontSize = DSTypography.Body.Large,
-            fontWeight = FontWeight.Bold
-        )
     }
 }

@@ -29,7 +29,7 @@ import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.Reminder
 import com.example.dementiaapp.feature.components.CheckBox
-import com.example.dementiaapp.feature.components.ConfirmationDialog
+import com.example.dementiaapp.feature.components.ConfirmationDialogue
 import com.example.dementiaapp.feature.components.time.DatePickerSection
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
@@ -85,7 +85,7 @@ fun CRRemindersScreen(
             StickyActionButton(
                 text = "Add Reminder",
                 colour = DSColours.FeatureColours.Reminders.Primary,
-                onAddClick = { onAddOrEditReminder(null) },
+                onClick = { onAddOrEditReminder(null) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.BottomCenter)
@@ -95,7 +95,7 @@ fun CRRemindersScreen(
         if (state.showConfirmationDialog) {
             val selectedReminder = state.selectedReminder
             if (selectedReminder != null) {
-                ConfirmationDialog(
+                ConfirmationDialogue(
                     text = "delete the entry \"${selectedReminder.message}\"",
                     onConfirm = { viewModel.deleteReminder(selectedReminder) },
                     onDeny = { viewModel.hideConfirmationDialog() }

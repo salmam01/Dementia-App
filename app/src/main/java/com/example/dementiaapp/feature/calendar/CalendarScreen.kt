@@ -40,6 +40,7 @@ import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
 import com.example.dementiaapp.feature.components.time.DayTimeSection
+import com.example.dementiaapp.localization.LocalizedStrings
 import com.example.dementiaapp.util.time.TimeFormatterUtil
 import org.koin.androidx.compose.koinViewModel
 
@@ -50,6 +51,7 @@ fun CalendarScreen(
 ) {
     val viewModel: CalendarViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val strings = LocalizedStrings.current
 
     Box(
         modifier = modifier
@@ -89,10 +91,10 @@ fun CalendarScreen(
             )
         }
         StickyActionButton(
-            text = "Month View",
+            text = strings.monthView,
             icon = Icons.Filled.CalendarMonth,
             colour = DSColours.FeatureColours.Calendar.Primary,
-            onAddClick = { },
+            onClick = { },
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)

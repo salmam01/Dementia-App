@@ -30,7 +30,7 @@ fun StickyActionButton(
     text: String,
     icon: ImageVector? = null,
     colour: Color,
-    onAddClick: () -> Unit,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Surface(
@@ -40,7 +40,7 @@ fun StickyActionButton(
         modifier = modifier
     ) {
         Button(
-            onClick = onAddClick,
+            onClick = onClick,
             colors = ButtonDefaults.buttonColors(
                 containerColor = colour,
                 contentColor = DSColours.OnPrimary

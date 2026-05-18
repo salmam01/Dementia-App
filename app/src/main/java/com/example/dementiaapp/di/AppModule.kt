@@ -14,7 +14,7 @@ import com.example.dementiaapp.feature.myfamily.main.MyFamilyViewModel
 import com.example.dementiaapp.feature.myfamily.form.MyFamilyFormViewModel
 import com.example.dementiaapp.feature.profile.main.ProfileViewModel
 import com.example.dementiaapp.feature.reminders.shared.RemindersViewModel
-import com.example.dementiaapp.feature.reminders.form.RemindersFormViewModel
+import com.example.dementiaapp.feature.reminders.shared.form.RemindersFormViewModel
 import com.example.dementiaapp.repository.features.DiaryRepository
 import com.example.dementiaapp.repository.features.DiaryRepositoryImpl
 import com.example.dementiaapp.repository.features.MedicationRepository

@@ -15,7 +15,7 @@ import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.Person
-import com.example.dementiaapp.feature.components.ConfirmationDialog
+import com.example.dementiaapp.feature.components.ConfirmationDialogue
 import com.example.dementiaapp.feature.components.DetailsRow
 import com.example.dementiaapp.feature.components.ProfileCard
 import com.example.dementiaapp.feature.myfamily.main.MyFamilyViewModel
@@ -59,7 +59,7 @@ fun MyFamilyDetailScreen(
 
             if (state.showConfirmationDialog) {
                 val entryName = selectedEntry.fullName.substringAfter(" ")
-                ConfirmationDialog(
+                ConfirmationDialogue(
                     text = "delete \"$entryName\"",
                     onConfirm = { viewModel.deleteEntry(selectedEntry) },
                     onDeny = { viewModel.hideConfirmationDialog() }
