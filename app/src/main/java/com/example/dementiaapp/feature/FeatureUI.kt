@@ -19,7 +19,7 @@ import kotlin.collections.map
 
 val strings = LocalizedStrings.current
 
-data class FeatureUI (
+data class FeatureUI(
     val name: String,
     val colour: Color,
     val icon: ImageVector

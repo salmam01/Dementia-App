@@ -1,6 +1,6 @@
 package com.example.dementiaapp.repository.features
 
-import com.example.dementiaapp.domain.models.Person
+import com.example.dementiaapp.domain.models.feature.Person
 import java.time.LocalDate
 
 interface MyFamilyRepository {

@@ -67,4 +67,13 @@ interface Strings {
     val favouriteBook: String
     val favouriteFood: String
     val favouriteMusic: String
+
+    // Logs
+    val summary: String
+    val summaryExtended: String
+    val type: String
+    val completed: String
+    val missed: String
+    val added: String
+    val deleted: String
 }

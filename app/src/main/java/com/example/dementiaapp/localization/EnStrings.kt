@@ -67,4 +67,13 @@ object EnStrings: Strings {
     override val favouriteBook: String = "Favourite Book"
     override val favouriteFood: String = "Favourite Food"
     override val favouriteMusic: String = "Favourite Music"
+
+    // Logs
+    override val summary: String = "Summary"
+    override val summaryExtended: String = "Extend Summary"
+    override val type: String = "Type"
+    override val completed: String = "Completed"
+    override val missed: String = "Missed"
+    override val added: String = "Added"
+    override val deleted: String = "Deleted"
 }

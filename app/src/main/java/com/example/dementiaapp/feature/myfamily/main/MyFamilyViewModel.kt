@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.example.dementiaapp.domain.configuration.PermissionsManager
 import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.FeatureType
-import com.example.dementiaapp.domain.models.Person
+import com.example.dementiaapp.domain.models.feature.Person
 import com.example.dementiaapp.domain.state.AppStateHolder
 import com.example.dementiaapp.repository.features.MyFamilyRepository
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,6 +1,6 @@
 package com.example.dementiaapp.feature.medication.management
 
-import com.example.dementiaapp.domain.models.Medication
+import com.example.dementiaapp.domain.models.feature.Medication
 
 data class ManageMedicationState(
     val isEditing: Boolean = false,

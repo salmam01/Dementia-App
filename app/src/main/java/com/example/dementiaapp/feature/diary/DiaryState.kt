@@ -1,6 +1,6 @@
 package com.example.dementiaapp.feature.diary
 
-import com.example.dementiaapp.domain.models.DiaryEntry
+import com.example.dementiaapp.domain.models.feature.DiaryEntry
 import java.time.LocalDate
 
 data class DiaryState(

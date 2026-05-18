@@ -36,6 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
+import com.example.dementiaapp.domain.models.feature.CalendarFeatureTypes
 import com.example.dementiaapp.feature.AllFeatureUI
 import com.example.dementiaapp.feature.components.CheckBox
 import com.example.dementiaapp.feature.components.buttons.ActionButton

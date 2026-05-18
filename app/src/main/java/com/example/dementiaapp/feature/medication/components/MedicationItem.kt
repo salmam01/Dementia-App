@@ -29,9 +29,9 @@ import androidx.compose.ui.text.font.FontWeight
 import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
-import com.example.dementiaapp.domain.models.Medication
-import com.example.dementiaapp.domain.models.MedicationType
-import com.example.dementiaapp.domain.models.toUIString
+import com.example.dementiaapp.domain.models.feature.Medication
+import com.example.dementiaapp.domain.models.feature.MedicationType
+import com.example.dementiaapp.domain.models.feature.toUIString
 import com.example.dementiaapp.feature.components.CheckBox
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles

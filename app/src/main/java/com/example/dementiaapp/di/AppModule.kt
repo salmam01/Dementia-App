@@ -8,6 +8,7 @@ import com.example.dementiaapp.feature.calendar.CalendarViewModel
 import com.example.dementiaapp.feature.diary.DiaryViewModel
 import com.example.dementiaapp.feature.diary.form.DiaryFormViewModel
 import com.example.dementiaapp.feature.home.HomeViewModel
+import com.example.dementiaapp.feature.logs.LogsViewModel
 import com.example.dementiaapp.feature.medication.management.ManageMedicationViewModel
 import com.example.dementiaapp.feature.medication.main.MedicationViewModel
 import com.example.dementiaapp.feature.myfamily.main.MyFamilyViewModel
@@ -25,6 +26,8 @@ import com.example.dementiaapp.repository.features.RemindersRepository
 import com.example.dementiaapp.repository.features.RemindersRepositoryImpl
 import com.example.dementiaapp.repository.UserRepository
 import com.example.dementiaapp.repository.UserRepositoryImpl
+import com.example.dementiaapp.repository.features.LogsRepository
+import com.example.dementiaapp.repository.features.LogsRepositoryImpl
 import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.bind
@@ -37,6 +40,7 @@ val appModule = module {
     singleOf(::MedicationRepositoryImpl).bind<MedicationRepository>()
     singleOf(::MyFamilyRepositoryImpl).bind<MyFamilyRepository>()
     singleOf(::RemindersRepositoryImpl).bind<RemindersRepository>()
+    singleOf(::LogsRepositoryImpl).bind<LogsRepository>()
 
     single {
         AppStateHolder(
@@ -62,4 +66,5 @@ val appModule = module {
     viewModelOf(::RemindersViewModel)
     viewModelOf(::RemindersFormViewModel)
     viewModelOf(::ProfileViewModel)
+    viewModelOf(::LogsViewModel)
 }

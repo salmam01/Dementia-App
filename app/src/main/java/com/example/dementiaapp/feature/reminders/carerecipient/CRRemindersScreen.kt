@@ -27,7 +27,7 @@ import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.domain.models.FeatureAction
-import com.example.dementiaapp.domain.models.Reminder
+import com.example.dementiaapp.domain.models.feature.Reminder
 import com.example.dementiaapp.feature.components.CheckBox
 import com.example.dementiaapp.feature.components.ConfirmationDialogue
 import com.example.dementiaapp.feature.components.time.DatePickerSection

@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.dementiaapp.domain.configuration.PermissionsManager
 import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.FeatureType
-import com.example.dementiaapp.domain.models.Reminder
+import com.example.dementiaapp.domain.models.feature.Reminder
 import com.example.dementiaapp.domain.state.AppStateHolder
 import com.example.dementiaapp.domain.state.DateStateHolder
 import com.example.dementiaapp.domain.state.UserStateHolder

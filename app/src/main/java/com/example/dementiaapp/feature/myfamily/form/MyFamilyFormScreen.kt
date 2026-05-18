@@ -14,7 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dementiaapp.design.DSColours
-import com.example.dementiaapp.domain.models.Person
+import com.example.dementiaapp.domain.models.feature.Person
 import com.example.dementiaapp.feature.components.buttons.FormButtons
 import com.example.dementiaapp.feature.components.TitleSection
 import com.example.dementiaapp.feature.components.form.DatePickerForm

@@ -1,6 +1,6 @@
 package com.example.dementiaapp.feature.medication.main
 
-import com.example.dementiaapp.domain.models.Medication
+import com.example.dementiaapp.domain.models.feature.Medication
 import java.time.LocalDate
 
 data class MedicationState(

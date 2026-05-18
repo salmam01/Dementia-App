@@ -1,8 +1,8 @@
 package com.example.dementiaapp.repository.features
 
-import com.example.dementiaapp.domain.models.Medication
-import com.example.dementiaapp.domain.models.MedicationType
-import com.example.dementiaapp.domain.models.RepetitionType
+import com.example.dementiaapp.domain.models.feature.Medication
+import com.example.dementiaapp.domain.models.feature.MedicationType
+import com.example.dementiaapp.domain.models.feature.RepetitionType
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.temporal.ChronoUnit

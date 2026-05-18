@@ -37,7 +37,7 @@ import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.domain.models.FeatureAction
-import com.example.dementiaapp.domain.models.Person
+import com.example.dementiaapp.domain.models.feature.Person
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonVariant
 import org.koin.androidx.compose.koinViewModel

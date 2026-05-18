@@ -1,7 +1,7 @@
 package com.example.dementiaapp.feature.reminders.shared.form
 
 import androidx.lifecycle.ViewModel
-import com.example.dementiaapp.domain.models.Reminder
+import com.example.dementiaapp.domain.models.feature.Reminder
 import com.example.dementiaapp.domain.state.AppStateHolder
 import com.example.dementiaapp.repository.features.RemindersRepository
 import kotlinx.coroutines.flow.MutableStateFlow

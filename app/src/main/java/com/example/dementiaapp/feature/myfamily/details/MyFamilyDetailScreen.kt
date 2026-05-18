@@ -14,7 +14,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.domain.models.FeatureAction
-import com.example.dementiaapp.domain.models.Person
+import com.example.dementiaapp.domain.models.feature.Person
 import com.example.dementiaapp.feature.components.ConfirmationDialogue
 import com.example.dementiaapp.feature.components.DetailsRow
 import com.example.dementiaapp.feature.components.ProfileCard

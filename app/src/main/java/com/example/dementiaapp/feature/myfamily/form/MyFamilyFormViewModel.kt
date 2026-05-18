@@ -1,7 +1,7 @@
 package com.example.dementiaapp.feature.myfamily.form
 
 import androidx.lifecycle.ViewModel
-import com.example.dementiaapp.domain.models.Person
+import com.example.dementiaapp.domain.models.feature.Person
 import com.example.dementiaapp.repository.features.MyFamilyRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -34,6 +34,8 @@ import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.domain.models.DayTime
 import com.example.dementiaapp.domain.models.FeatureType
+import com.example.dementiaapp.domain.models.feature.CalendarEntry
+import com.example.dementiaapp.domain.models.feature.CalendarFeatureTypes
 import com.example.dementiaapp.domain.time.TimeProvider.toDayTime
 import com.example.dementiaapp.feature.components.time.DatePickerSection
 import com.example.dementiaapp.feature.components.buttons.ActionButton
@@ -140,7 +142,7 @@ fun CalendarEntries(
                 DayTimeSection(dayTime = dayTime)
 
                 items.forEach { entry ->
-                    CalendarEntry(
+                    CalendarEntryItem(
                         entry = entry,
                         onClick = { onEntryClick(it) }
                     )
@@ -151,7 +153,7 @@ fun CalendarEntries(
 }
 
 @Composable
-fun CalendarEntry(
+fun CalendarEntryItem(
     entry: CalendarEntry,
     onClick: (FeatureType) -> Unit,
     modifier: Modifier = Modifier

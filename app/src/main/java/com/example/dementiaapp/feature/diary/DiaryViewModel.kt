@@ -3,7 +3,7 @@ package com.example.dementiaapp.feature.diary
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dementiaapp.domain.configuration.PermissionsManager
-import com.example.dementiaapp.domain.models.DiaryEntry
+import com.example.dementiaapp.domain.models.feature.DiaryEntry
 import com.example.dementiaapp.domain.state.DateStateHolder
 import com.example.dementiaapp.repository.features.DiaryRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,8 +15,7 @@ import java.time.LocalDate
 
 class DiaryViewModel(
     private val diaryRepository: DiaryRepository,
-    private val dateStateHolder: DateStateHolder,
-    private val permissionsManager: PermissionsManager
+    private val dateStateHolder: DateStateHolder
 ): ViewModel() {
     private val _state = MutableStateFlow(DiaryState(
         selectedDate = dateStateHolder.selectedDate.value

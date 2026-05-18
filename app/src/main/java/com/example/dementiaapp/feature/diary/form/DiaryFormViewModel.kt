@@ -1,7 +1,7 @@
 package com.example.dementiaapp.feature.diary.form
 
 import androidx.lifecycle.ViewModel
-import com.example.dementiaapp.domain.models.DiaryEntry
+import com.example.dementiaapp.domain.models.feature.DiaryEntry
 import com.example.dementiaapp.domain.state.DateStateHolder
 import com.example.dementiaapp.repository.features.DiaryRepository
 import kotlinx.coroutines.flow.MutableStateFlow

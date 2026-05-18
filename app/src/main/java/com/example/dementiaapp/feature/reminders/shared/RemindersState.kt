@@ -1,6 +1,6 @@
 package com.example.dementiaapp.feature.reminders.shared
 
-import com.example.dementiaapp.domain.models.Reminder
+import com.example.dementiaapp.domain.models.feature.Reminder
 import com.example.dementiaapp.domain.models.User
 import java.time.LocalDate
 

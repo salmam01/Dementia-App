@@ -1,7 +1,7 @@
 package com.example.dementiaapp.feature.medication.management
 
 import androidx.lifecycle.ViewModel
-import com.example.dementiaapp.domain.models.Medication
+import com.example.dementiaapp.domain.models.feature.Medication
 import com.example.dementiaapp.repository.features.MedicationRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

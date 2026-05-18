@@ -14,7 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.dementiaapp.design.DSColours
-import com.example.dementiaapp.domain.models.Medication
+import com.example.dementiaapp.domain.models.feature.Medication
 import com.example.dementiaapp.feature.components.buttons.FormButtons
 import com.example.dementiaapp.feature.components.TitleSection
 import org.koin.androidx.compose.koinViewModel

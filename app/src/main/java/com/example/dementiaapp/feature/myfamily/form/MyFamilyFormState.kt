@@ -1,6 +1,6 @@
 package com.example.dementiaapp.feature.myfamily.form
 
-import com.example.dementiaapp.domain.models.Person
+import com.example.dementiaapp.domain.models.feature.Person
 
 data class MyFamilyFormState(
     val isEditing: Boolean = false,

@@ -1,6 +1,6 @@
 package com.example.dementiaapp.feature.diary.form
 
-import com.example.dementiaapp.domain.models.DiaryEntry
+import com.example.dementiaapp.domain.models.feature.DiaryEntry
 import java.time.LocalDate
 import java.time.LocalTime
 

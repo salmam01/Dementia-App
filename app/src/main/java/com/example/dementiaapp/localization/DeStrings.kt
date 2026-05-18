@@ -66,4 +66,13 @@ object DeStrings: Strings {
     override val favouriteBook: String = "Lieblingsbuch"
     override val favouriteFood: String = "Lieblingsessen"
     override val favouriteMusic: String = "Lieblingsmusik"
+
+    // Logs
+    override val summary: String = "Zusammenfassung"
+    override val summaryExtended: String = "Zusammenfassung erweitern"
+    override val type: String = "Typ"
+    override val completed: String = "Abgeschlossen"
+    override val missed: String = "Verpasst"
+    override val added: String = "Hinzugefügt"
+    override val deleted: String = "Gelöscht"
 }

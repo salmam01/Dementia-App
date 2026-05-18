@@ -1,4 +1,4 @@
-package com.example.dementiaapp.domain.models
+package com.example.dementiaapp.domain.models.feature
 
 import java.time.LocalDate
 import java.time.LocalTime
