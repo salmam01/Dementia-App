@@ -4,12 +4,15 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
+import com.example.dementiaapp.util.time.TimeFormatterUtil
 
 @Composable
 fun DetailsRow(
@@ -38,4 +41,9 @@ fun DetailsRow(
             fontWeight = FontWeight.Normal
         )
     }
+
+    HorizontalDivider(
+        thickness = DSDimensions.DividerThickness1,
+        color = DSColours.Divider
+    )
 }

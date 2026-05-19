@@ -19,6 +19,8 @@ object EnStrings: Strings {
 
     // Time management
     override val today: String = "Today"
+    override val date: String = "Date"
+    override val time: String = "Time"
     override val yesterday: String = "Tomorrow"
     override val tomorrow: String = "Yesterday"
 
@@ -71,6 +73,7 @@ object EnStrings: Strings {
     override val nickname: String = "Nickname"
     override val relationship: String = "Relationship"
     override val age: String = "Age"
+    override val birthday: String = "Birthday"
     override val address: String = "Address"
     override val number: String = "Number"
     override val hobbies: String = "Hobbies"
@@ -96,4 +99,12 @@ object EnStrings: Strings {
     override val settingsDescription: String = "Change Appearance, ..."
     override val myCaregiver: String = "My Caregiver"
     override val myCareRecipient: String = "My Care Recipient"
+    override val gender: String = "Gender"
+    override val male: String = "Male"
+    override val female: String = "Female"
+    override val origin: String = "Origin"
+    override val birthplace: String = "Birthplace"
+    override val uploadPhoto: String = "Upload Photo"
+    override val changePhoto: String = "Change Photo"
+    override val removePhoto: String = "Remove Photo"
 }

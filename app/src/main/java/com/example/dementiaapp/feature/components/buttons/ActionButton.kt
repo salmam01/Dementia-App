@@ -15,6 +15,7 @@ import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.Tune
+import androidx.compose.material.icons.rounded.Upload
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -152,5 +153,26 @@ object ActionButtonStyles {
         icon = Icons.Rounded.Call,
         contentDescription = strings.call,
         containerColour = DSColours.FeatureColours.Call.Primary
+    )
+
+    val UploadPhoto = ActionButtonStyle(
+        text = strings.uploadPhoto,
+        icon = Icons.Rounded.Upload,
+        contentDescription = strings.uploadPhoto,
+        containerColour = DSColours.EditPrimary
+    )
+
+    val ChangePhoto = ActionButtonStyle(
+        text = strings.changePhoto,
+        icon = Icons.Rounded.Upload,
+        contentDescription = strings.changePhoto,
+        containerColour = DSColours.EditPrimary
+    )
+
+    val RemovePhoto = ActionButtonStyle(
+        text = strings.removePhoto,
+        icon = Icons.Rounded.Delete,
+        contentDescription = strings.removePhoto,
+        containerColour = DSColours.NegativeActionPrimary
     )
 }

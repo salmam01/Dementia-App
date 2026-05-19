@@ -9,6 +9,7 @@ interface UserRepository {
     fun getCurrentUser(): User
     fun assignCarePartner(carePartnerId: String)
     fun getCarePartner(carePartnerId: String): User?
+    fun updateUser(user: User)
 }
 
 class UserRepositoryImpl: UserRepository {
@@ -41,18 +42,16 @@ class UserRepositoryImpl: UserRepository {
         )
     )
 
-    private val currentUser = users.first {
-        it.role == UserRole.CAREGIVER
-    }
+    private val currentUserId = "1"
 
     override fun getCurrentUser(): User {
-        return currentUser
+        return users.first { it.id == currentUserId}
     }
 
     override fun assignCarePartner(
         carePartnerId: String
     ) {
-        currentUser.carePartnerId = carePartnerId
+        getCurrentUser().carePartnerId = carePartnerId
     }
 
     override fun getCarePartner(
@@ -61,5 +60,13 @@ class UserRepositoryImpl: UserRepository {
         return users.firstOrNull {
             it.id == carePartnerId
         }
+    }
+
+    override fun updateUser(user: User) {
+        val index = users.indexOfFirst { it.id == user.id }
+        if (index != -1) {
+            users[index] = user
+        }
+        println(users)
     }
 }

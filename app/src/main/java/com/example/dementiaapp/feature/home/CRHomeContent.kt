@@ -146,11 +146,13 @@ fun CRFeatures(
             verticalArrangement = Arrangement.spacedBy(DSDimensions.Space4)
         ) {
             even.forEach { featureUI ->
-                CRFeatureItem(
-                    carePartnerName = carePartnerName,
-                    item = featureUI,
-                    onClick = { onFeatureClick(featureUI.feature.type) }
-                )
+                if (featureUI.feature.type != FeatureType.PROFILE) {
+                    CRFeatureItem(
+                        carePartnerName = carePartnerName,
+                        item = featureUI,
+                        onClick = { onFeatureClick(featureUI.feature.type) }
+                    )
+                }
             }
         }
 

@@ -20,6 +20,8 @@ sealed interface Route: NavKey {
 
     @Serializable
     data object MyData: Route
+    @Serializable
+    data object MyDataForm: Route
 
     @Serializable
     data object Calendar: Route
@@ -69,6 +71,7 @@ fun NavKey.title(): String = when (this) {
     Route.Profile -> "Profile"
     Route.CarePartner -> "My Care Partner"
     Route.MyData -> "My Information"
+    Route.MyDataForm -> "My Information"
     Route.Calendar -> "Calendar"
     Route.Diary -> "Diary"
     is Route.DiaryForm -> "Diary"

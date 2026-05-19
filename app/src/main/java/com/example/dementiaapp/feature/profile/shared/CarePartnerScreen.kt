@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.profile.carepartner
+package com.example.dementiaapp.feature.profile.shared
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -40,7 +40,6 @@ import com.example.dementiaapp.domain.models.User
 import com.example.dementiaapp.domain.models.UserRole
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
-import com.example.dementiaapp.feature.profile.main.ProfileViewModel
 import com.example.dementiaapp.localization.LocalizedStrings
 import org.koin.androidx.compose.koinViewModel
 

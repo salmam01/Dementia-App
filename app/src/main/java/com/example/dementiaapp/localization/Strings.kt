@@ -18,6 +18,8 @@ interface Strings {
     val call: String
 
     // Time management
+    val date: String
+    val time: String
     val today: String
     val yesterday: String
     val tomorrow: String
@@ -71,6 +73,7 @@ interface Strings {
     val nickname: String
     val relationship: String
     val age: String
+    val birthday: String
     val address: String
     val number: String
     val hobbies: String
@@ -96,4 +99,12 @@ interface Strings {
     val settingsDescription: String
     val myCaregiver: String
     val myCareRecipient: String
+    val gender: String
+    val male: String
+    val female: String
+    val origin: String
+    val birthplace: String
+    val uploadPhoto: String
+    val changePhoto: String
+    val removePhoto: String
 }

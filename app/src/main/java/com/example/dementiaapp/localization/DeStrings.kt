@@ -18,6 +18,8 @@ object DeStrings: Strings {
     override val call: String = "Anrufen"
 
     // Time management
+    override val date: String = "Datum"
+    override val time: String = "Zeit"
     override val today: String = "Heute"
     override val yesterday: String = "Gestern"
     override val tomorrow: String = "Morgen"
@@ -71,6 +73,7 @@ object DeStrings: Strings {
     override val nickname: String = "Spitzname"
     override val relationship: String = "Beziehung"
     override val age: String = "Alter"
+    override val birthday: String = "Geburtstag"
     override val address: String = "Adresse"
     override val number: String = "Nummer"
     override val hobbies: String = "Hobbies"
@@ -96,4 +99,12 @@ object DeStrings: Strings {
     override val settingsDescription: String = "Aussehen ändern, ..."
     override val myCaregiver: String = "Meine Pflegeperson"
     override val myCareRecipient: String = "Meine Pflegeperson"
+    override val gender: String = "Geschlecht"
+    override val male: String = "Männlich"
+    override val female: String = "Weiblich"
+    override val origin: String = "Herkunft"
+    override val birthplace: String = "Geburtsort"
+    override val uploadPhoto: String = "Foto hochladen"
+    override val changePhoto: String = "Foto ändern"
+    override val removePhoto: String = "Foto entfernen"
 }

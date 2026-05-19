@@ -41,9 +41,10 @@ import com.example.dementiaapp.feature.medication.shared.MedicationScreen
 import com.example.dementiaapp.feature.myfamily.details.MyFamilyDetailScreen
 import com.example.dementiaapp.feature.myfamily.main.MyFamilyScreen
 import com.example.dementiaapp.feature.myfamily.form.MyFamilyFormScreen
-import com.example.dementiaapp.feature.profile.carepartner.CarePartnerScreen
-import com.example.dementiaapp.feature.profile.main.ProfileScreen
-import com.example.dementiaapp.feature.profile.mydata.MyDataScreen
+import com.example.dementiaapp.feature.profile.shared.CarePartnerScreen
+import com.example.dementiaapp.feature.profile.shared.ProfileScreen
+import com.example.dementiaapp.feature.profile.shared.mydata.MyDataFormScreen
+import com.example.dementiaapp.feature.profile.shared.mydata.MyDataScreen
 import com.example.dementiaapp.feature.reminders.shared.form.RemindersFormScreen
 import com.example.dementiaapp.feature.reminders.shared.RemindersScreen
 import org.koin.compose.koinInject
@@ -285,7 +286,18 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
                         )
                     }
                     entry<Route.MyData> {
-                        MyDataScreen()
+                        MyDataScreen(
+                            onNavigate = {
+                                navigator.navigate(Route.MyDataForm)
+                            }
+                        )
+                    }
+                    entry<Route.MyDataForm> {
+                        MyDataFormScreen(
+                            onBack = {
+                                navigator.goBack()
+                            }
+                        )
                     }
                 }
             )

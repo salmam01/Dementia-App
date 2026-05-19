@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import com.example.dementiaapp.design.DSColours
+import com.example.dementiaapp.localization.LocalizedStrings
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -16,13 +17,16 @@ import java.time.format.DateTimeFormatter
 fun DatePickerForm(
     date: LocalDate,
     onDateSelected: (LocalDate) -> Unit,
+
+    label: String ?= null,
     colour: Color,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val strings = LocalizedStrings.current
 
     PickerFieldForm(
-        label = "Date",
+        label = label ?: strings.date,
         value = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")),
         colour = colour,
         leadingIcon = Icons.Rounded.DateRange,

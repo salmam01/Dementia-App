@@ -35,6 +35,7 @@ fun ProfileCard(
     name: String,
     description: String,
     image: String?,
+    isEditing: Boolean = false,
 
     modifier: Modifier = Modifier,
 
@@ -43,6 +44,8 @@ fun ProfileCard(
 
     onEditClick: () -> Unit,
     onDeleteClick: () -> Unit,
+    onChangePhoto: (() -> Unit)? = null,
+    onRemovePhoto: (() -> Unit)? = null,
 
     containerColour: Color = DSColours.Tertiary,
     imageOutlineColour: Color = DSColours.OnPrimary,
@@ -76,37 +79,49 @@ fun ProfileCard(
             horizontalAlignment = Alignment.Start,
             modifier = Modifier.weight(1f)
         ) {
-            Text(
-                text = name,
-                fontSize = DSTypography.Display.Small,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(modifier = Modifier.height(DSDimensions.Space1))
-            Text(
-                text = description,
-                fontSize = DSTypography.Body.Large,
-                fontWeight = FontWeight.Normal
-            )
+            if (isEditing) {
+                ActionButton(
+                    style = ActionButtonStyles.ChangePhoto,
+                    onClick = { onChangePhoto?.invoke() }
+                )
+                Spacer(modifier = Modifier.height(DSDimensions.Space1))
+                ActionButton(
+                    style = ActionButtonStyles.RemovePhoto,
+                    onClick = { onRemovePhoto?.invoke() }
+                )
+            } else {
+                Text(
+                    text = name,
+                    fontSize = DSTypography.Display.Small,
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.height(DSDimensions.Space1))
+                Text(
+                    text = description,
+                    fontSize = DSTypography.Body.Large,
+                    fontWeight = FontWeight.Normal
+                )
 
-            if (canEdit) {
-                Spacer(modifier = Modifier.height(DSDimensions.Space2))
+                if (canEdit) {
+                    Spacer(modifier = Modifier.height(DSDimensions.Space2))
 
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Start,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    ActionButton(
-                        style = ActionButtonStyles.Edit,
-                        onClick = onEditClick
-                    )
-
-                    if (canDelete) {
-                        Spacer(modifier = Modifier.width(DSDimensions.Space4))
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Start,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
                         ActionButton(
-                            style = ActionButtonStyles.Delete,
-                            onClick = onDeleteClick
+                            style = ActionButtonStyles.Edit,
+                            onClick = onEditClick
                         )
+
+                        if (canDelete) {
+                            Spacer(modifier = Modifier.width(DSDimensions.Space4))
+                            ActionButton(
+                                style = ActionButtonStyles.Delete,
+                                onClick = onDeleteClick
+                            )
+                        }
                     }
                 }
             }

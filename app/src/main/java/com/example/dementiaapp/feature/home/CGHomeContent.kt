@@ -63,11 +63,13 @@ fun CGFeatures(
             verticalArrangement = Arrangement.spacedBy(DSDimensions.Space4)
         ) {
             features.forEach { featureUI ->
-                CGFeatureItem(
-                    item = featureUI,
-                    carePartnerName = carePartnerName,
-                    onClick = { onFeatureClick(featureUI.feature.type) }
-                )
+                if (featureUI.feature.type != FeatureType.PROFILE) {
+                    CGFeatureItem(
+                        item = featureUI,
+                        carePartnerName = carePartnerName,
+                        onClick = { onFeatureClick(featureUI.feature.type) }
+                    )
+                }
             }
         }
     }

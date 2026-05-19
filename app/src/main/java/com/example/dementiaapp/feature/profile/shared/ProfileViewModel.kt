@@ -1,7 +1,6 @@
-package com.example.dementiaapp.feature.profile.main
+package com.example.dementiaapp.feature.profile.shared
 
 import androidx.lifecycle.ViewModel
-import com.example.dementiaapp.domain.configuration.PermissionsManager
 import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.FeatureType
 import com.example.dementiaapp.domain.state.AppStateHolder
@@ -17,7 +16,7 @@ class ProfileViewModel(
     val state = _state.asStateFlow()
 
     fun initializeState(): ProfileState {
-        val currentUser = userRepository.getCurrentUser()
+        val currentUser = appStateHolder.appState.value.user
         val carePartner =
             if (currentUser.carePartnerId != null)
                 userRepository.getCarePartner(currentUser.carePartnerId!!)
@@ -42,5 +41,9 @@ class ProfileViewModel(
             action = action,
             featureType = FeatureType.PROFILE
         )
+    }
+
+    fun refresh() {
+        userRepository.getCurrentUser()
     }
 }

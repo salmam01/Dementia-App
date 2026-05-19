@@ -116,89 +116,45 @@ fun EntryDetails(
                 label = strings.fullName,
                 detail = person.fullName
             )
-            HorizontalDivider(
-                thickness = DSDimensions.DividerThickness1,
-                color = DSColours.Divider
-            )
             DetailsRow(
                 label = strings.relationship,
                 detail = person.relationShip
-            )
-            HorizontalDivider(
-                thickness = DSDimensions.DividerThickness1,
-                color = DSColours.Divider
             )
             DetailsRow(
                 label = strings.nickname,
                 detail = person.nickName
             )
-            HorizontalDivider(
-                thickness = DSDimensions.DividerThickness1,
-                color = DSColours.Divider
-            )
             DetailsRow(
                 label = strings.age,
                 detail = age
-            )
-            HorizontalDivider(
-                thickness = DSDimensions.DividerThickness1,
-                color = DSColours.Divider
             )
             DetailsRow(
                 label = strings.address,
                 detail = person.address
             )
-            HorizontalDivider(
-                thickness = DSDimensions.DividerThickness1,
-                color = DSColours.Divider
-            )
             DetailsRow(
                 label = strings.number,
                 detail = person.number
-            )
-            HorizontalDivider(
-                thickness = DSDimensions.DividerThickness1,
-                color = DSColours.Divider
             )
             DetailsRow(
                 label = strings.hobbies,
                 detail = person.hobbies
             )
-            HorizontalDivider(
-                thickness = DSDimensions.DividerThickness1,
-                color = DSColours.Divider
-            )
             DetailsRow(
                 label = strings.favouriteColour,
                 detail = person.favouriteColour
-            )
-            HorizontalDivider(
-                thickness = DSDimensions.DividerThickness1,
-                color = DSColours.Divider
             )
             DetailsRow(
                 label = strings.favouriteBook,
                 detail = person.favouriteBook
             )
-            HorizontalDivider(
-                thickness = DSDimensions.DividerThickness1,
-                color = DSColours.Divider
-            )
             DetailsRow(
                 label = strings.favouriteFood,
                 detail = person.favouriteFood
             )
-            HorizontalDivider(
-                thickness = DSDimensions.DividerThickness1,
-                color = DSColours.Divider
-            )
             DetailsRow(
                 label = strings.favouriteMusic,
                 detail = person.favouriteMusic
-            )
-            HorizontalDivider(
-                thickness = DSDimensions.DividerThickness1,
-                color = DSColours.Divider
             )
         }
     }

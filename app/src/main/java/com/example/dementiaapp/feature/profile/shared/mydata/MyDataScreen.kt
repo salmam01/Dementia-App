@@ -1,5 +1,6 @@
-package com.example.dementiaapp.feature.profile.mydata
+package com.example.dementiaapp.feature.profile.shared.mydata
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -7,6 +8,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -17,22 +19,29 @@ import com.example.dementiaapp.domain.models.User
 import com.example.dementiaapp.domain.models.UserGender
 import com.example.dementiaapp.feature.components.DetailsRow
 import com.example.dementiaapp.feature.components.ProfileCard
-import com.example.dementiaapp.feature.profile.main.ProfileViewModel
+import com.example.dementiaapp.feature.profile.shared.ProfileViewModel
+import com.example.dementiaapp.localization.LocalizedStrings
 import com.example.dementiaapp.util.time.TimeFormatterUtil
 import org.koin.androidx.compose.koinViewModel
 import java.time.LocalDate
 
 @Composable
 fun MyDataScreen(
+    onNavigate: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val viewModel: ProfileViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
     val user = state.user
 
+    LaunchedEffect(Unit) {
+        viewModel.refresh()
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
+            .background(DSColours.Surface)
     ) {
         ProfileCard(
             name = user.name,
@@ -40,9 +49,9 @@ fun MyDataScreen(
             image = user.image,
 
             canEdit = viewModel.hasAccessToAction(FeatureAction.EDIT),
-            canDelete = viewModel.hasAccessToAction(FeatureAction.DELETE),
+            canDelete = false,
 
-            onEditClick = { },
+            onEditClick = onNavigate,
             onDeleteClick = { },
         )
 
@@ -55,11 +64,10 @@ fun MyDataDetails(
     user: User,
     modifier: Modifier = Modifier
 ) {
-    val gender = if (user.gender == UserGender.FEMALE) {
-        "Female"
-    } else {
-        "Male"
-    }
+    val strings = LocalizedStrings.current
+    val gender =
+        if (user.gender == UserGender.FEMALE) strings.female
+        else strings.male
 
     val age = user.birthday.let {
         LocalDate.now().year - it.year
@@ -71,75 +79,36 @@ fun MyDataDetails(
             .verticalScroll(rememberScrollState())
     ) {
         DetailsRow(
-            label = "Full Name",
+            label = strings.fullName,
             detail = user.name
         )
-        HorizontalDivider(
-            thickness = DSDimensions.DividerThickness1,
-            color = DSColours.Divider
-        )
-
         DetailsRow(
-            label = "Age",
+            label = strings.age,
             detail = age
         )
-        HorizontalDivider(
-            thickness = DSDimensions.DividerThickness1,
-            color = DSColours.Divider
-        )
-
         DetailsRow(
-            label = "Birthday",
+            label = strings.birthday,
             detail = TimeFormatterUtil.formatBirthday(user.birthday)
         )
-        HorizontalDivider(
-            thickness = DSDimensions.DividerThickness1,
-            color = DSColours.Divider
-        )
-
         DetailsRow(
-            label = "Sex",
+            label = strings.gender,
             detail = gender
         )
-        HorizontalDivider(
-            thickness = DSDimensions.DividerThickness1,
-            color = DSColours.Divider
-        )
-
         DetailsRow(
-            label = "Address",
+            label = strings.address,
             detail = user.address
         )
-        HorizontalDivider(
-            thickness = DSDimensions.DividerThickness1,
-            color = DSColours.Divider
-        )
-
         DetailsRow(
-            label = "Number",
+            label = strings.number,
             detail = user.number
         )
-        HorizontalDivider(
-            thickness = DSDimensions.DividerThickness1,
-            color = DSColours.Divider
-        )
-
         DetailsRow(
-            label = "Origin",
+            label = strings.origin,
             detail = user.origin
         )
-        HorizontalDivider(
-            thickness = DSDimensions.DividerThickness1,
-            color = DSColours.Divider
-        )
-
         DetailsRow(
-            label = "Birthplace",
+            label = strings.birthplace,
             detail = user.birthPlace
-        )
-        HorizontalDivider(
-            thickness = DSDimensions.DividerThickness1,
-            color = DSColours.Divider
         )
     }
 }

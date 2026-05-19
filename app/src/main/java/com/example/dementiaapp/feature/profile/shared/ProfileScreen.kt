@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.profile.main
+package com.example.dementiaapp.feature.profile.shared
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
