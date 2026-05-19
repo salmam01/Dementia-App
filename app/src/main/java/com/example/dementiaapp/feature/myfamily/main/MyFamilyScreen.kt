@@ -40,6 +40,7 @@ import com.example.dementiaapp.domain.models.FeatureAction
 import com.example.dementiaapp.domain.models.feature.Person
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonVariant
+import com.example.dementiaapp.localization.LocalizedStrings
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -50,11 +51,13 @@ fun MyFamilyScreen(
 ) {
     val viewModel: MyFamilyViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
-    val canAdd = viewModel.hasAccessToAction(FeatureAction.ADD)
+    val strings = LocalizedStrings.current
 
     LaunchedEffect(Unit) {
         viewModel.getEntries()
     }
+
+    val canAdd = viewModel.hasAccessToAction(FeatureAction.ADD)
 
     Box(
         modifier = modifier
@@ -78,7 +81,7 @@ fun MyFamilyScreen(
         }
         if (canAdd) {
             StickyActionButton(
-                text = "Add Entry",
+                text = strings.addEntry,
                 colour = DSColours.FeatureColours.MyFamily.Primary,
                 onClick = onAddEntry,
                 modifier = Modifier
@@ -91,6 +94,7 @@ fun MyFamilyScreen(
 
 @Composable
 fun TopText(modifier: Modifier = Modifier) {
+    val strings = LocalizedStrings.current
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
@@ -99,7 +103,7 @@ fun TopText(modifier: Modifier = Modifier) {
             .padding(DSDimensions.Space4)
     ) {
         Text(
-            text = "People who are important to you",
+            text = strings.myFamilyDescription,
             fontSize = DSTypography.Body.Small,
             fontWeight = FontWeight.SemiBold,
             textAlign = TextAlign.Center,
@@ -134,6 +138,8 @@ fun MyFamilyEntryItem(
     onItemClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
+
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -191,15 +197,11 @@ fun MyFamilyEntryItem(
 
         Spacer(modifier = Modifier.height(DSDimensions.Space2))
 
-        Row(
-
-        ) {
-            ActionButtonVariant(
-                text = "View Details",
-                icon = Icons.Rounded.RemoveRedEye,
-                containerColour = DSColours.FeatureColours.MyFamily.Primary,
-                onClick = onItemClick,
-            )
-        }
+        ActionButtonVariant(
+            text = strings.viewDetails,
+            icon = Icons.Rounded.RemoveRedEye,
+            containerColour = DSColours.FeatureColours.MyFamily.Primary,
+            onClick = onItemClick,
+        )
     }
 }

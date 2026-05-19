@@ -35,6 +35,7 @@ import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
+import com.example.dementiaapp.localization.LocalizedStrings
 
 @Composable
 fun ConfirmationDialogue(
@@ -43,6 +44,8 @@ fun ConfirmationDialogue(
     onDeny: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
+
     Surface(
         color = DSColours.OnSurface.copy(alpha = 0.8f),
         modifier = modifier
@@ -81,7 +84,7 @@ fun ConfirmationDialogue(
                 ) {
                     Icon(
                         imageVector = Icons.Rounded.Warning,
-                        contentDescription = "Warning",
+                        contentDescription = strings.warning,
                         tint = DSColours.Warning,
                         modifier = Modifier
                             .size(DSDimensions.Icon8)
@@ -90,7 +93,7 @@ fun ConfirmationDialogue(
                     Spacer(modifier = Modifier.width(DSDimensions.Space4))
 
                     Text(
-                        text = "Warning",
+                        text = strings.warning,
                         fontSize = DSTypography.Headline.Large,
                         fontWeight = FontWeight.Bold
                     )
@@ -105,7 +108,7 @@ fun ConfirmationDialogue(
                 ) {
                     Text(
                         text = buildAnnotatedString {
-                            append("Are you sure you want to ")
+                            append("${strings.confirmationDialogue} ")
                             withStyle(
                                 style = SpanStyle(
                                     fontWeight = FontWeight.Bold

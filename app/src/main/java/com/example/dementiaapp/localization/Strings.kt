@@ -5,6 +5,7 @@ interface Strings {
     val greeting: String
     val greetingDate: String
     val placeholderText: String
+    val carePartner: String
 
     // Feature names
     val calendar: String
@@ -32,6 +33,7 @@ interface Strings {
     val yes: String
     val no: String
     val confirm: String
+    val applyFilters: String
 
     val warning: String
     val confirmationDialogue: String
@@ -51,16 +53,24 @@ interface Strings {
     // Reminders screen
     val reminder: String
     val message: String
+    val addReminder: String
+    val from: String
 
     // Diary screen
     val title: String
     val content: String
+    val addEntry: String
+    val deleteEntry: String
+    val noDiaryEntry: String
 
     // My Family screen
+    val viewDetails: String
+    val myFamilyDescription: String
     val person: String
     val fullName: String
     val nickname: String
     val relationship: String
+    val age: String
     val address: String
     val number: String
     val hobbies: String
@@ -69,7 +79,7 @@ interface Strings {
     val favouriteFood: String
     val favouriteMusic: String
 
-    // Logs
+    // Logs screen
     val summary: String
     val summaryExtended: String
     val type: String
@@ -77,4 +87,13 @@ interface Strings {
     val missed: String
     val added: String
     val deleted: String
+
+    // Profile
+    val me: String
+    val myData: String
+    val myDataDescription: String
+    val settings: String
+    val settingsDescription: String
+    val myCaregiver: String
+    val myCareRecipient: String
 }

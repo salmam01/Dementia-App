@@ -42,6 +42,7 @@ import com.example.dementiaapp.domain.models.User
 import com.example.dementiaapp.domain.models.UserRole
 import com.example.dementiaapp.feature.components.ProfileCard
 import com.example.dementiaapp.feature.profile.components.ProfileItem
+import com.example.dementiaapp.localization.LocalizedStrings
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -53,6 +54,7 @@ fun ProfileScreen(
 ) {
     val viewModel: ProfileViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val strings = LocalizedStrings.current
     val user = state.user
 
     Column(
@@ -60,7 +62,7 @@ fun ProfileScreen(
     ) {
         ProfileCard(
             name = user.name,
-            description = "Me",
+            description = strings.me,
             image = user.image,
 
             canEdit = false,
@@ -97,6 +99,8 @@ fun ProfileItemsList(
     onItemClick: (ProfileNavigation) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
+
     Column(
         verticalArrangement = Arrangement.spacedBy(DSDimensions.Space5),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -107,17 +111,17 @@ fun ProfileItemsList(
             when (it) {
                 ProfileNavigation.MY_DATA -> {
                     ProfileItem(
-                        title = "My Data",
+                        title = strings.myData,
                         icon = Icons.Rounded.CreditCard,
-                        description = "Name, Address, ...",
+                        description = strings.myDataDescription,
                         onItemClick = { onItemClick(it) },
                     )
                 }
                 ProfileNavigation.SETTINGS -> {
                     ProfileItem(
-                        title = "Settings",
+                        title = strings.settings,
                         icon = Icons.Rounded.Settings,
-                        description = "Change Appearance, ...",
+                        description = strings.settingsDescription,
                         onItemClick = { onItemClick(it) },
                     )
                 }
@@ -140,11 +144,11 @@ fun CarePartnerItem(
     onItemClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val title = if (carePartner.role == UserRole.CARE_RECIPIENT) {
-        "My Care Recipient"
-    } else {
-        "My Caregiver"
-    }
+    val strings = LocalizedStrings.current
+    val title =
+        if (carePartner.role == UserRole.CARE_RECIPIENT) strings.myCareRecipient
+        else strings.myCaregiver
+
 
     Surface(
         shape = RoundedCornerShape(DSDimensions.CornerRadius1),
@@ -163,7 +167,7 @@ fun CarePartnerItem(
             Image(
                 painter = (carePartner.image
                     ?: painterResource(R.drawable.placeholder_avatar)) as Painter,
-                contentDescription = "Care partner avatar",
+                contentDescription = "${strings.carePartner} Avatar",
                 modifier = Modifier
                     .size(DSDimensions.Avatar1)
                     .clip(CircleShape)

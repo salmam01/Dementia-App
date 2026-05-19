@@ -77,7 +77,7 @@ fun AllMedicationsScreen(
         }
         if (canAdd) {
             StickyActionButton(
-                text = "Add Medication",
+                text = "${strings.add} ${strings.medication}",
                 icon = Icons.Filled.Add,
                 colour = DSColours.FeatureColours.Medication.Primary,
                 onClick = { onAddOrEditMedication(null) },

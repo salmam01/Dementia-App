@@ -27,6 +27,7 @@ import com.example.dementiaapp.domain.models.UserRole
 import com.example.dementiaapp.feature.components.CheckBox
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
+import com.example.dementiaapp.localization.LocalizedStrings
 import com.example.dementiaapp.util.time.TimeFormatterUtil
 
 @Composable
@@ -46,6 +47,7 @@ fun ReminderItem(
     titleFontSize: TextUnit,
     contentFontSize: TextUnit
 ) {
+    val strings = LocalizedStrings.current
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -81,7 +83,7 @@ fun ReminderItem(
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = "from ${item.from}",
+                    text = "${strings.from} ${item.from}",
                     fontSize = DSTypography.Body.Small,
                     fontWeight = FontWeight.Normal
                 )

@@ -47,7 +47,6 @@ fun HomeScreen(
 ) {
     val viewModel: HomeViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
-    val features = state.features
 
     Column(
         modifier = modifier

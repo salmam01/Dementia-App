@@ -34,9 +34,9 @@ fun AddOrSaveButton(
     modifier: Modifier = Modifier
 ) {
     val strings = LocalizedStrings.current
-    val label =
-        text ?: if (isEditing) strings.save
-                else strings.add
+    val label = text ?:
+        if (isEditing) strings.save
+        else strings.add
     val icon =
         if (isEditing) Icons.Rounded.Check
         else Icons.Rounded.Add

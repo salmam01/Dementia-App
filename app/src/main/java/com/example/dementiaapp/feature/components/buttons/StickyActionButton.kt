@@ -59,7 +59,7 @@ fun StickyActionButton(
             ) {
                 Icon(
                     imageVector = icon ?: Icons.Rounded.Add,
-                    contentDescription = null,
+                    contentDescription = text,
                     modifier = Modifier
                         .size(DSDimensions.Icon6)
                 )

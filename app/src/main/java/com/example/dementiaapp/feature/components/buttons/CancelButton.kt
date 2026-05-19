@@ -21,12 +21,15 @@ import androidx.compose.ui.text.font.FontWeight
 import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
+import com.example.dementiaapp.localization.LocalizedStrings
 
 @Composable
 fun CancelButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
+
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
@@ -49,13 +52,13 @@ fun CancelButton(
         ) {
             Icon(
                 imageVector = Icons.Rounded.Close,
-                contentDescription = "Cancel",
+                contentDescription = strings.cancel,
                 modifier = Modifier
                     .size(DSDimensions.Icon5)
             )
             Spacer(modifier = Modifier.width(DSDimensions.Space2))
             Text(
-                text = "Cancel",
+                text = strings.cancel,
                 fontSize = DSTypography.Headline.Large,
                 fontWeight = FontWeight.Bold
             )

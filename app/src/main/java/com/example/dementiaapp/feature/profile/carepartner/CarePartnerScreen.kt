@@ -41,6 +41,7 @@ import com.example.dementiaapp.domain.models.UserRole
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
 import com.example.dementiaapp.feature.profile.main.ProfileViewModel
+import com.example.dementiaapp.localization.LocalizedStrings
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -73,10 +74,12 @@ fun CarePartnerHeader(
     carePartner: User,
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
+
     val description = if (carePartner.role == UserRole.CARE_RECIPIENT) {
-        "My Care Recipient"
+        strings.myCareRecipient
     } else {
-        "My Caregiver"
+        strings.myCaregiver
     }
 
     Column(
@@ -88,7 +91,7 @@ fun CarePartnerHeader(
     ) {
         Image(
             painter = (carePartner.image ?: painterResource(R.drawable.placeholder_avatar)) as Painter,
-            contentDescription = null,
+            contentDescription = "${carePartner.name.substringBefore(" ")}'s Avatar",
             modifier = Modifier
                 .size(DSDimensions.Avatar4)
                 .clip(CircleShape)
@@ -122,6 +125,7 @@ fun CarePartnerBody(
     carePartner: User,
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
     Column(
         verticalArrangement = Arrangement.spacedBy(DSDimensions.Space2),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -131,13 +135,13 @@ fun CarePartnerBody(
     ) {
         CarePartnerDetail(
             icon = Icons.Rounded.Favorite,
-            label = "Relationship",
+            label = strings.relationship,
             detail = "Daughter"
         )
 
         CarePartnerDetail(
             icon = Icons.Rounded.Phone,
-            label = "Phone Number",
+            label = strings.number,
             detail = carePartner.number
         )
     }

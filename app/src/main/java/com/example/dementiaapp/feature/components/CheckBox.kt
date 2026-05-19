@@ -45,19 +45,14 @@ fun CheckBox(
         modifier = modifier
             .size(size)
             .clip(shape)
-            .background(
-                color = if (itemChecked)
-                    backgroundColourChecked
-                else
-                    backgroundColour
+            .background(color =
+                if (itemChecked) backgroundColourChecked
+                else backgroundColour
             )
             .border(
                 width = borderRadius,
-                color =
-                    if (itemChecked)
-                        borderColourChecked
-                    else
-                        borderColour,
+                color = if (itemChecked) borderColourChecked
+                        else borderColour,
                 shape = shape
             )
             .clickable { onItemChecked() },

@@ -56,10 +56,9 @@ fun ProfileCard(
             .background(containerColour)
             .padding(DSDimensions.Space4)
     ) {
-
         Image(
             painter = (image ?: painterResource(R.drawable.placeholder_avatar)) as Painter,
-            contentDescription = null,
+            contentDescription = "$name's Image",
             modifier = Modifier
                 .size(DSDimensions.Avatar3)
                 .clip(CircleShape)

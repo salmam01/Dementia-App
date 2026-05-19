@@ -29,6 +29,7 @@ import com.example.dementiaapp.feature.components.time.DatePickerSection
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
+import com.example.dementiaapp.localization.LocalizedStrings
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -38,11 +39,13 @@ fun DiaryScreen(
 ) {
     val viewModel: DiaryViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
-    val entry = state.diaryEntry
+    val strings = LocalizedStrings.current
 
     LaunchedEffect(Unit) {
         viewModel.refresh()
     }
+
+    val entry = state.diaryEntry
 
     Column(
         modifier = modifier
@@ -62,7 +65,7 @@ fun DiaryScreen(
             if (entry == null) {
                 EmptyDiaryEntry()
                 StickyActionButton(
-                    text = "Add Entry",
+                    text = strings.addEntry,
                     colour = DSColours.FeatureColours.Diary.Primary,
                     onClick = { onAddOrEditEntry(null) },
                     modifier = Modifier
@@ -79,7 +82,7 @@ fun DiaryScreen(
                 )
                 if (state.showConfirmationDialog) {
                     ConfirmationDialogue(
-                        text = "delete the entry \"${entry.title}\"",
+                        text = "${strings.deleteEntry} \"${entry.title}\"",
                         onConfirm = { viewModel.deleteDiaryEntry(entry) },
                         onDeny = { viewModel.hideConfirmationDialog() }
                     )
@@ -137,7 +140,6 @@ fun DiaryEntry(
                 fontWeight = FontWeight.Normal
             )
 
-            // TODO: Check patient permissions
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End,
@@ -176,6 +178,8 @@ fun ImagePreview(
 fun EmptyDiaryEntry(
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
+
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -186,8 +190,7 @@ fun EmptyDiaryEntry(
             )
     ) {
         Text(
-            text = "No Diary Entry for this date yet.\n" +
-                    "Tap the button below to add one!",
+            text = strings.noDiaryEntry,
             fontSize = DSTypography.Body.Large,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center

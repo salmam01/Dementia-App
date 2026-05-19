@@ -19,6 +19,7 @@ import com.example.dementiaapp.feature.components.ConfirmationDialogue
 import com.example.dementiaapp.feature.components.DetailsRow
 import com.example.dementiaapp.feature.components.ProfileCard
 import com.example.dementiaapp.feature.myfamily.main.MyFamilyViewModel
+import com.example.dementiaapp.localization.LocalizedStrings
 import org.koin.androidx.compose.koinViewModel
 import java.time.LocalDate
 
@@ -30,6 +31,8 @@ fun MyFamilyDetailScreen(
 ) {
     val viewModel: MyFamilyViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val strings = LocalizedStrings.current
+
     val selectedEntry = state.selectedEntry
     val canAdd = viewModel.hasAccessToAction(FeatureAction.ADD)
     val canEdit = canAdd
@@ -60,7 +63,7 @@ fun MyFamilyDetailScreen(
             if (state.showConfirmationDialog) {
                 val entryName = selectedEntry.fullName.substringAfter(" ")
                 ConfirmationDialogue(
-                    text = "delete \"$entryName\"",
+                    text = "${strings.deleteLowerCase} \"$entryName\"",
                     onConfirm = { viewModel.deleteEntry(selectedEntry) },
                     onDeny = { viewModel.hideConfirmationDialog() }
                 )
@@ -78,6 +81,8 @@ fun EntryDetails(
     onDeleteClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
+
     val age = person.birthday?.let {
         LocalDate.now().year - it.year
     }.toString()
@@ -108,7 +113,7 @@ fun EntryDetails(
                 .verticalScroll(rememberScrollState())
         ) {
             DetailsRow(
-                label = "Full Name",
+                label = strings.fullName,
                 detail = person.fullName
             )
             HorizontalDivider(
@@ -116,7 +121,7 @@ fun EntryDetails(
                 color = DSColours.Divider
             )
             DetailsRow(
-                label = "Relationship",
+                label = strings.relationship,
                 detail = person.relationShip
             )
             HorizontalDivider(
@@ -124,7 +129,7 @@ fun EntryDetails(
                 color = DSColours.Divider
             )
             DetailsRow(
-                label = "Nickname",
+                label = strings.nickname,
                 detail = person.nickName
             )
             HorizontalDivider(
@@ -132,7 +137,7 @@ fun EntryDetails(
                 color = DSColours.Divider
             )
             DetailsRow(
-                label = "Age",
+                label = strings.age,
                 detail = age
             )
             HorizontalDivider(
@@ -140,7 +145,7 @@ fun EntryDetails(
                 color = DSColours.Divider
             )
             DetailsRow(
-                label = "Address",
+                label = strings.address,
                 detail = person.address
             )
             HorizontalDivider(
@@ -148,7 +153,7 @@ fun EntryDetails(
                 color = DSColours.Divider
             )
             DetailsRow(
-                label = "Number",
+                label = strings.number,
                 detail = person.number
             )
             HorizontalDivider(
@@ -156,7 +161,7 @@ fun EntryDetails(
                 color = DSColours.Divider
             )
             DetailsRow(
-                label = "Hobbies",
+                label = strings.hobbies,
                 detail = person.hobbies
             )
             HorizontalDivider(
@@ -164,7 +169,7 @@ fun EntryDetails(
                 color = DSColours.Divider
             )
             DetailsRow(
-                label = "Favourite Colour",
+                label = strings.favouriteColour,
                 detail = person.favouriteColour
             )
             HorizontalDivider(
@@ -172,7 +177,7 @@ fun EntryDetails(
                 color = DSColours.Divider
             )
             DetailsRow(
-                label = "Favourite Book",
+                label = strings.favouriteBook,
                 detail = person.favouriteBook
             )
             HorizontalDivider(
@@ -180,7 +185,7 @@ fun EntryDetails(
                 color = DSColours.Divider
             )
             DetailsRow(
-                label = "Favourite Food",
+                label = strings.favouriteFood,
                 detail = person.favouriteFood
             )
             HorizontalDivider(
@@ -188,7 +193,7 @@ fun EntryDetails(
                 color = DSColours.Divider
             )
             DetailsRow(
-                label = "Favourite Music",
+                label = strings.favouriteMusic,
                 detail = person.favouriteMusic
             )
             HorizontalDivider(

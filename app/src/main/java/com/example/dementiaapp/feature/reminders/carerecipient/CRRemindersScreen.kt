@@ -35,6 +35,7 @@ import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
 import com.example.dementiaapp.feature.reminders.shared.RemindersViewModel
+import com.example.dementiaapp.localization.LocalizedStrings
 import com.example.dementiaapp.util.time.TimeFormatterUtil
 
 @Composable
@@ -44,6 +45,8 @@ fun CRRemindersScreen(
     modifier: Modifier = Modifier
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val strings = LocalizedStrings.current
+
     val canAdd = viewModel.hasAccessToAction(FeatureAction.ADD)
     val canEdit = canAdd
             && viewModel.hasAccessToAction(FeatureAction.EDIT)
@@ -83,7 +86,7 @@ fun CRRemindersScreen(
 
         if (canAdd) {
             StickyActionButton(
-                text = "Add Reminder",
+                text = strings.addReminder,
                 colour = DSColours.FeatureColours.Reminders.Primary,
                 onClick = { onAddOrEditReminder(null) },
                 modifier = Modifier
@@ -96,7 +99,7 @@ fun CRRemindersScreen(
             val selectedReminder = state.selectedReminder
             if (selectedReminder != null) {
                 ConfirmationDialogue(
-                    text = "delete the entry \"${selectedReminder.message}\"",
+                    text = "${strings.deleteEntry} \"${selectedReminder.message}\"",
                     onConfirm = { viewModel.deleteReminder(selectedReminder) },
                     onDeny = { viewModel.hideConfirmationDialog() }
                 )
@@ -145,6 +148,8 @@ fun RemindersItem(
     onDeleteClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val strings = LocalizedStrings.current
+
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -180,7 +185,7 @@ fun RemindersItem(
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = "from ${item.from}",
+                    text = "${strings.from} ${item.from}",
                     fontSize = DSTypography.Body.Small,
                     fontWeight = FontWeight.Normal
                 )

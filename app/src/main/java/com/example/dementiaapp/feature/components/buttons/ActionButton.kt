@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import com.example.dementiaapp.design.DSColours
 import com.example.dementiaapp.design.DSDimensions
 import com.example.dementiaapp.design.DSTypography
+import com.example.dementiaapp.localization.LocalizedStrings
 
 @Composable
 fun ActionButton(
@@ -94,60 +95,62 @@ data class ActionButtonStyle(
     val contentColour: Color = DSColours.Surface
 )
 
+val strings = LocalizedStrings.current
+
 object ActionButtonStyles {
     val Edit = ActionButtonStyle(
-        text = "Edit",
+        text = strings.edit,
         icon = Icons.Rounded.Edit,
-        contentDescription = "Edit",
+        contentDescription = strings.edit,
         containerColour = DSColours.EditPrimary
     )
 
     val Delete = ActionButtonStyle(
-        text = "Delete",
+        text = strings.delete,
         icon = Icons.Rounded.Delete,
-        contentDescription = "Delete",
+        contentDescription = strings.delete,
         containerColour = DSColours.NegativeActionPrimary
     )
 
     val Confirm = ActionButtonStyle(
-        text = "Yes",
+        text = strings.yes,
         icon = Icons.Rounded.Check,
-        contentDescription = "Confirm",
+        contentDescription = strings.yes,
         containerColour = DSColours.PositiveActionPrimary
     )
 
     val Deny = ActionButtonStyle(
-        text = "No",
+        text = strings.no,
         icon = Icons.Rounded.Close,
-        contentDescription = "Deny",
+        contentDescription = strings.no,
         containerColour = DSColours.NegativeActionPrimary
     )
 
     val Filter = ActionButtonStyle(
-        text = "Filter",
+        text = strings.filter,
         icon = Icons.Rounded.Tune,
-        contentDescription = "Filter",
+        contentDescription = strings.filter,
         containerColour = DSColours.FeatureColours.Calendar.Primary
     )
 
     val ApplyFilter = ActionButtonStyle(
-        text = "Apply Filters",
+        text = strings.applyFilters,
         icon = Icons.Rounded.Check,
-        contentDescription = "Apply Filter",
+        contentDescription = strings.applyFilters,
         containerColour = DSColours.FeatureColours.Calendar.Primary
     )
 
     val Message = ActionButtonStyle(
-        text = "Message",
+        text = strings.message,
         icon = Icons.Rounded.ChatBubble,
-        contentDescription = "Message",
+        contentDescription = strings.message,
         containerColour = DSColours.FeatureColours.CarePartner.Primary
     )
 
     val Call = ActionButtonStyle(
-        text = "Call",
+        text = strings.call,
         icon = Icons.Rounded.Call,
-        contentDescription = "Call",
+        contentDescription = strings.call,
         containerColour = DSColours.FeatureColours.Call.Primary
     )
 }

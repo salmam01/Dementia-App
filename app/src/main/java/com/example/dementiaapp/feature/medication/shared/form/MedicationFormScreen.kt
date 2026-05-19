@@ -164,7 +164,6 @@ fun MedicationFormContent(
             optionText = { it.toString() }
         )
 
-
         TextFieldForm(
             label = strings.notes,
             initialValue = draftMedication.notes ?: "",

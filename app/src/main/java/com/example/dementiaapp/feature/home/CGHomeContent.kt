@@ -80,23 +80,17 @@ fun CGFeatureItem(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val borderColour = if (item.feature.type == FeatureType.CALL) {
-        DSColours.FeatureColours.Call.Primary
-    } else {
-        DSColours.Primary
-    }
+    val borderColour =
+        if (item.feature.type == FeatureType.CALL) DSColours.FeatureColours.Call.Primary
+        else DSColours.Primary
 
-    val backgroundColour = if (item.feature.type == FeatureType.CALL) {
-        DSColours.FeatureColours.Call.Container
-    } else {
-        DSColours.Surface
-    }
+    val backgroundColour =
+        if (item.feature.type == FeatureType.CALL) DSColours.FeatureColours.Call.Container
+        else DSColours.Surface
 
-    val itemName = if (item.feature.type == FeatureType.CALL) {
-        "${item.ui.name} " + carePartnerName
-    } else {
-        item.ui.name
-    }
+    val itemName =
+        if (item.feature.type == FeatureType.CALL) "${item.ui.name} " + carePartnerName
+        else item.ui.name
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -114,7 +108,7 @@ fun CGFeatureItem(
     ) {
         Icon(
             imageVector = item.ui.icon,
-            contentDescription = null,
+            contentDescription = item.ui.name,
             tint = item.ui.colour,
             modifier = Modifier.size(DSDimensions.Icon7)
         )

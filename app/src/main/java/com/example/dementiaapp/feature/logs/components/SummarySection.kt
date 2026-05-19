@@ -28,11 +28,9 @@ fun SummarySection(
     modifier: Modifier = Modifier
 ) {
     val strings = LocalizedStrings.current
-    val arrowDirection = if (extended) {
-        -90f
-    } else {
-        90f
-    }
+    val arrowDirection =
+        if (extended) -90f
+        else 90f
 
     Column(
         modifier = modifier
