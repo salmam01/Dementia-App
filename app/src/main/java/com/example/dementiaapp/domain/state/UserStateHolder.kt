@@ -15,7 +15,7 @@ class UserStateHolder(
 
     fun initializeState() {
         // for demonstration purposes
-        val carePartnerId = "2"
+        val carePartnerId = "1"
         userRepository.assignCarePartner(carePartnerId)
     }
 }

@@ -42,7 +42,7 @@ class UserRepositoryImpl: UserRepository {
         )
     )
 
-    private val currentUserId = "1"
+    private val currentUserId = "2"
 
     override fun getCurrentUser(): User {
         return users.first { it.id == currentUserId}
