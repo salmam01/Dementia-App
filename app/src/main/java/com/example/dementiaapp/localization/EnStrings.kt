@@ -41,6 +41,7 @@ object EnStrings: Strings {
     override val filters: String = "Filters"
 
     // Medication screen
+    override val name: String = "Name"
     override val dose: String = "Dose"
     override val takeAt: String = "Take at"
     override val repeat: String = "Repeat"

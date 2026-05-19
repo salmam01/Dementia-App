@@ -1,12 +1,14 @@
 package com.example.dementiaapp.feature.components.form
 
 import android.app.TimePickerDialog
+import androidx.compose.foundation.background
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import com.example.dementiaapp.design.DSColours
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
@@ -23,7 +25,7 @@ fun TimePickerForm(
         label = "Time",
         value = time.format(DateTimeFormatter.ofPattern("HH:mm")),
         colour = colour,
-        trailingIcon = Icons.Rounded.Schedule,
+        leadingIcon = Icons.Rounded.Schedule,
         onClick = {
             TimePickerDialog(
                 context,
@@ -36,5 +38,6 @@ fun TimePickerForm(
             ).show()
         },
         modifier = modifier
+            .background(DSColours.Surface)
     )
 }

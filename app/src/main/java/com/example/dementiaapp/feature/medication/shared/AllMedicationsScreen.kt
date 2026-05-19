@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.medication.all
+package com.example.dementiaapp.feature.medication.shared
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,6 +11,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,7 +23,6 @@ import com.example.dementiaapp.domain.models.feature.Medication
 import com.example.dementiaapp.feature.components.ConfirmationDialogue
 import com.example.dementiaapp.feature.components.buttons.StickyActionButton
 import com.example.dementiaapp.feature.medication.components.MedicationItem
-import com.example.dementiaapp.feature.medication.main.MedicationViewModel
 import com.example.dementiaapp.localization.LocalizedStrings
 import org.koin.androidx.compose.koinViewModel
 
@@ -34,6 +34,10 @@ fun AllMedicationsScreen(
     val viewModel: MedicationViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
     val strings = LocalizedStrings.current
+
+    LaunchedEffect(Unit) {
+        viewModel.refresh()
+    }
 
     val canAdd = viewModel.hasAccessToAction(FeatureAction.ADD)
     val canEdit = canAdd

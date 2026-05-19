@@ -35,6 +35,7 @@ import com.example.dementiaapp.domain.models.feature.toUIString
 import com.example.dementiaapp.feature.components.CheckBox
 import com.example.dementiaapp.feature.components.buttons.ActionButton
 import com.example.dementiaapp.feature.components.buttons.ActionButtonStyles
+import com.example.dementiaapp.feature.medication.shared.toUI
 import com.example.dementiaapp.localization.LocalizedStrings
 
 
@@ -50,6 +51,7 @@ fun MedicationItem(
     modifier: Modifier = Modifier
 ) {
     val strings = LocalizedStrings.current
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
@@ -102,7 +104,15 @@ fun MedicationItem(
                         shape = RoundedCornerShape(DSDimensions.CornerRadius1)
                     )
             ) {
-                MedicationIcon(medicationType = item.type)
+                Icon(
+                    imageVector = item.type.toUI().icon,
+                    contentDescription = null,
+                    tint = DSColours.FeatureColours.Medication.Primary,
+                    modifier = modifier.size(
+                        height = DSDimensions.Icon10,
+                        width = DSDimensions.Icon10
+                    )
+                )
             }
 
             Spacer(modifier = Modifier.width(DSDimensions.Space2))
@@ -193,30 +203,6 @@ fun MedicationItem(
         }
     }
 }
-
-@Composable
-fun MedicationIcon(
-    medicationType: MedicationType,
-    modifier: Modifier = Modifier
-) {
-    Icon(
-        imageVector = when (medicationType) {
-            MedicationType.Capsule -> Icons.Filled.Medication
-            MedicationType.Cream -> Icons.Filled.Spa
-            MedicationType.Drops -> Icons.Filled.WaterDrop
-            MedicationType.Injection -> Icons.Filled.Vaccines
-            MedicationType.Liquid -> Icons.Filled.LocalDrink
-            MedicationType.Pill -> Icons.Filled.Medication
-        },
-        contentDescription = null,
-        tint = DSColours.FeatureColours.Medication.Primary,
-        modifier = modifier.size(
-            height = DSDimensions.Icon10,
-            width = DSDimensions.Icon10
-        )
-    )
-}
-
 
 @Composable
 fun MedicationItemDetailRow(

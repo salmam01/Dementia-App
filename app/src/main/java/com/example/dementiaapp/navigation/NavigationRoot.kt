@@ -35,9 +35,9 @@ import com.example.dementiaapp.feature.diary.DiaryScreen
 import com.example.dementiaapp.feature.diary.form.DiaryFormScreen
 import com.example.dementiaapp.feature.home.HomeScreen
 import com.example.dementiaapp.feature.logs.LogsScreen
-import com.example.dementiaapp.feature.medication.all.AllMedicationsScreen
-import com.example.dementiaapp.feature.medication.management.ManageMedicationScreen
-import com.example.dementiaapp.feature.medication.main.MedicationScreen
+import com.example.dementiaapp.feature.medication.shared.AllMedicationsScreen
+import com.example.dementiaapp.feature.medication.shared.form.MedicationFormScreen
+import com.example.dementiaapp.feature.medication.shared.MedicationScreen
 import com.example.dementiaapp.feature.myfamily.details.MyFamilyDetailScreen
 import com.example.dementiaapp.feature.myfamily.main.MyFamilyScreen
 import com.example.dementiaapp.feature.myfamily.form.MyFamilyFormScreen
@@ -199,7 +199,7 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
                             },
                             onAddEntry = {
                                 navigator.navigate(
-                                    Route.MyFamilyForm(selectedEntryId = null)
+                                    Route.MyFamilyForm(entryId = null)
                                 )
                             }
                         )
@@ -211,14 +211,14 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
                             },
                             onEditEntry = {
                                 navigator.navigate(
-                                    Route.MyFamilyForm(selectedEntryId = it)
+                                    Route.MyFamilyForm(entryId = it)
                                 )
                             }
                         )
                     }
                     entry<Route.MyFamilyForm> {
                         MyFamilyFormScreen(
-                            selectedEntryId = it.selectedEntryId,
+                            selectedEntryId = it.entryId,
                             onBack = {
                                 navigator.navigate(Route.MyFamily)
                             }
@@ -235,26 +235,29 @@ fun NavigationRoot(modifier: Modifier = Modifier) {
                         AllMedicationsScreen(
                             onAddOrEditMedication = {
                                 navigator.navigate(
-                                    Route.MedicationForm(selectedMedicationId = it)
+                                    Route.MedicationForm(medicationId = it)
                                 )
                             },
                         )
                     }
                     entry<Route.MedicationForm> {
-                        ManageMedicationScreen(selectedMedicationId = it.selectedMedicationId)
+                        MedicationFormScreen(
+                            medicationId = it.medicationId,
+                            onBack = { navigator.goBack() }
+                        )
                     }
                     entry<Route.Reminders> {
                         RemindersScreen(
                             onAddOrEditReminder = {
                                 navigator.navigate(
-                                    Route.RemindersForm(selectedReminderId = it)
+                                    Route.RemindersForm(reminderId = it)
                                 )
                             }
                         )
                     }
                     entry<Route.RemindersForm> {
                         RemindersFormScreen(
-                            selectedReminderId = it.selectedReminderId,
+                            selectedReminderId = it.reminderId,
                             onBack = navigator::goBack
 
                         )

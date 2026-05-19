@@ -1,5 +1,6 @@
 package com.example.dementiaapp.feature.components.form
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -29,12 +30,15 @@ fun PickerFieldForm(
     label: String,
     value: String,
     colour: Color,
-    trailingIcon: ImageVector,
+    leadingIcon: ImageVector,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    trailingIcon: ImageVector ?= null
 ) {
     Column(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier
+            .fillMaxWidth()
+            .background(DSColours.Surface)
     ) {
         Column(
             modifier = Modifier
@@ -65,13 +69,25 @@ fun PickerFieldForm(
                     ),
                     leadingIcon = {
                         Icon(
-                            imageVector = trailingIcon,
+                            imageVector = leadingIcon,
                             contentDescription = null,
                             tint = colour,
                             modifier = Modifier
                                 .size(DSDimensions.Icon3)
                                 .padding(start = DSDimensions.Space1)
                         )
+                    },
+                    trailingIcon = {
+                        if (trailingIcon != null) {
+                            Icon(
+                                imageVector = trailingIcon,
+                                contentDescription = null,
+                                tint = colour,
+                                modifier = Modifier
+                                    .size(DSDimensions.Icon6)
+                                    .padding(end = DSDimensions.Space1)
+                            )
+                        }
                     },
                     shape = RoundedCornerShape(DSDimensions.CornerRadius1),
                     modifier = Modifier

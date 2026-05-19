@@ -41,6 +41,7 @@ interface Strings {
     val filters: String
 
     // Medication screen
+    val name: String
     val dose: String
     val takeAt: String
     val repeat: String

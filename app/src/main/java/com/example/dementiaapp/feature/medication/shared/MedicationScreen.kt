@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.medication.main
+package com.example.dementiaapp.feature.medication.shared
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,6 +13,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.RemoveRedEye
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,6 +40,10 @@ fun MedicationScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val strings = LocalizedStrings.current
 
+    LaunchedEffect(Unit) {
+        viewModel.refresh()
+    }
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -57,8 +62,8 @@ fun MedicationScreen(
 
             MedicationList(
                 state.medications,
-                canEdit = viewModel.hasAccessToAction(FeatureAction.EDIT),
-                canDelete = viewModel.hasAccessToAction(FeatureAction.DELETE),
+                canEdit = false,
+                canDelete = false,
                 onItemCompleted = { item ->
                     viewModel.setItemAsCompleted(item = item)
                 }

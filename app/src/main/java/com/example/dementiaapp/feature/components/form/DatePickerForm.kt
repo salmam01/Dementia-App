@@ -1,12 +1,14 @@
 package com.example.dementiaapp.feature.components.form
 
 import android.app.DatePickerDialog
+import androidx.compose.foundation.background
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DateRange
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import com.example.dementiaapp.design.DSColours
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -23,7 +25,7 @@ fun DatePickerForm(
         label = "Date",
         value = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")),
         colour = colour,
-        trailingIcon = Icons.Rounded.DateRange,
+        leadingIcon = Icons.Rounded.DateRange,
         onClick = {
             DatePickerDialog(
                 context,
@@ -36,5 +38,6 @@ fun DatePickerForm(
             ).show()
         },
         modifier = modifier
+            .background(DSColours.Surface)
     )
 }

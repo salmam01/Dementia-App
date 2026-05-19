@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.medication.main
+package com.example.dementiaapp.feature.medication.shared
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -101,4 +101,8 @@ class MedicationViewModel(
 
     fun nextDay() = dateStateHolder.nextDay()
     fun previousDay() = dateStateHolder.previousDay()
+
+    fun refresh() {
+        getMedications(state.value.selectedDate)
+    }
 }

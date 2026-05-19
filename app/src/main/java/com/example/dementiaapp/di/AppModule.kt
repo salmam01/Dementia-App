@@ -9,8 +9,8 @@ import com.example.dementiaapp.feature.diary.DiaryViewModel
 import com.example.dementiaapp.feature.diary.form.DiaryFormViewModel
 import com.example.dementiaapp.feature.home.HomeViewModel
 import com.example.dementiaapp.feature.logs.LogsViewModel
-import com.example.dementiaapp.feature.medication.management.ManageMedicationViewModel
-import com.example.dementiaapp.feature.medication.main.MedicationViewModel
+import com.example.dementiaapp.feature.medication.shared.form.MedicationFormViewModel
+import com.example.dementiaapp.feature.medication.shared.MedicationViewModel
 import com.example.dementiaapp.feature.myfamily.main.MyFamilyViewModel
 import com.example.dementiaapp.feature.myfamily.form.MyFamilyFormViewModel
 import com.example.dementiaapp.feature.profile.main.ProfileViewModel
@@ -58,7 +58,7 @@ val appModule = module {
     viewModelOf(::HomeViewModel)
     viewModelOf(::CalendarViewModel)
     viewModelOf(::MedicationViewModel)
-    viewModelOf(::ManageMedicationViewModel)
+    viewModelOf(::MedicationFormViewModel)
     viewModelOf(::DiaryViewModel)
     viewModelOf(::DiaryFormViewModel)
     viewModelOf(::MyFamilyViewModel)

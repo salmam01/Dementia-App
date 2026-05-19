@@ -37,7 +37,7 @@ sealed interface Route: NavKey {
     data object MyFamilyDetails: Route
     @Serializable
     data class MyFamilyForm(
-        val selectedEntryId: String?
+        val entryId: String?
     ): Route
 
     @Serializable
@@ -46,14 +46,14 @@ sealed interface Route: NavKey {
     data object AllMedications: Route
     @Serializable
     data class MedicationForm(
-        val selectedMedicationId: String?
+        val medicationId: String?
     ): Route
 
     @Serializable
     data object Reminders: Route
     @Serializable
     data class RemindersForm(
-        val selectedReminderId: String?
+        val reminderId: String?
     ): Route
 
     @Serializable

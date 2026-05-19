@@ -41,6 +41,7 @@ object DeStrings: Strings {
     override val filters: String = "Alle Filter"
 
     // Medication screen
+    override val name: String = "Name"
     override val dose: String = "Dosis"
     override val takeAt: String = ""
     override val repeat: String = ""

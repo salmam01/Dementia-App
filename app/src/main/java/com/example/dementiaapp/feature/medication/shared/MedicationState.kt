@@ -1,4 +1,4 @@
-package com.example.dementiaapp.feature.medication.main
+package com.example.dementiaapp.feature.medication.shared
 
 import com.example.dementiaapp.domain.models.feature.Medication
 import java.time.LocalDate
